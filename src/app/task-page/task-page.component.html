@@ -1,0 +1,177 @@
+<div class="task-details">
+    <h1>Task Details</h1>
+</div>
+<div class="main-content">
+    <div class="sidebar-left">
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <h2 style="margin: 0;">- Employee Qualifications:</h2>
+            <div style="width: 300px;">
+              <mat-slider
+                min="0"
+                max="100"
+                step="1"
+                showTickMarks
+                discrete
+                [displayWith]="formatLabel"
+               >
+              
+                <input matSliderThumb
+          
+                (valueChange)="update_chart_value($event, 0)">
+              </mat-slider>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <h2 style="margin: 0;">- Working Environment:</h2>
+            <div style="width: 300px;">
+              <mat-slider
+                min="0"
+                max="100"
+                step="1"
+                showTickMarks
+                discrete
+                [displayWith]="formatLabel">
+                <input matSliderThumb
+          
+                (valueChange)="update_chart_value($event, 1)">
+              </mat-slider>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <h2 style="margin: 0;">- Quality Management:</h2>
+            <div style="width: 300px;">
+              <mat-slider
+                min="0"
+                max="100"
+                step="1"
+                showTickMarks
+                discrete
+                [displayWith]="formatLabel">
+                <input matSliderThumb
+                (valueChange)="update_chart_value($event, 2)">
+              </mat-slider>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <h2 style="margin: 0;">- Lead Time:</h2>
+            <div style="width: 300px;">
+              <mat-slider
+                min="0"
+                max="100"
+                step="1"
+                showTickMarks
+                discrete
+                [displayWith]="formatLabel">
+                <input matSliderThumb
+            
+                (valueChange)="update_chart_value($event, 3)">
+              </mat-slider>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <h2 style="margin: 0;">- Capacity:</h2>
+            <div style="width: 300px;">
+              <mat-slider
+                min="0"
+                max="100"
+                step="1"
+                showTickMarks
+                discrete
+                [displayWith]="formatLabel">
+                <input matSliderThumb
+        
+                (valueChange)="update_chart_value($event, 4)">
+              </mat-slider>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <h2 style="margin: 0;">- Economic Situation:</h2>
+            <div style="width: 300px;">
+              <mat-slider
+                min="0"
+                max="100"
+                step="1"
+                showTickMarks
+                discrete
+                [displayWith]="formatLabel">
+                <input matSliderThumb
+             
+                (valueChange)="update_chart_value($event, 5)">
+              </mat-slider>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <h2 style="margin: 0;">- Independance from Suppliers:</h2>
+            <div style="width: 300px;">
+              <mat-slider
+                min="0"
+                max="100"
+                step="1"
+                showTickMarks
+                discrete
+                [displayWith]="formatLabel">
+                <input matSliderThumb
+                (valueChange)="update_chart_value($event, 6)">
+              </mat-slider>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <h2 style="margin: 1000;">- Equity Capital:</h2>
+            <div style="width: 300px;">
+              <mat-slider
+                min="0"
+                max="100"
+                step="1"
+                showTickMarks
+                discrete
+                [displayWith]="formatLabel">
+                <input matSliderThumb
+                (valueChange)="update_chart_value($event, 7)">
+              </mat-slider>
+            </div>
+        </div>
+
+      
+    </div>
+    
+    <div >
+      <canvas #radarChartCanvas></canvas>
+    </div>
+    
+
+</div>
+  <div class="bottom-section">
+    <div class="subtask-list">
+      <h2>Subtasks</h2>
+      <ul>
+        <li>Subtask 1 
+            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                <mat-button-toggle value="bold">Done</mat-button-toggle>
+                <mat-button-toggle value="italic">Not Yet!!</mat-button-toggle>
+               
+            </mat-button-toggle-group>
+        </li>
+        <li>Subtask 2</li>
+        <li>Subtask 3</li>
+      </ul>
+    </div>
+    <div class="circle-diagram">
+        <div class="container">
+            <div class="text-section">
+              <h1>Problem</h1>
+              <p>Substantiate your definition of the problem with a chart of your choice from the object panel, and add details here.</p>
+            </div>
+            <div class="chart-section">
+              <div class="chart"></div>
+            </div>
+        </div>
+      
+    </div>
+  </div>

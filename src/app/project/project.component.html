@@ -1,0 +1,165 @@
+<!-- src/app/project/project.component.html -->
+
+<header class="header">
+    <div class="logo">
+      <span class="logo-text">PeakPerform</span>
+    </div>
+  </header>
+  <h1>Project</h1>
+  <main class="main-content">
+    <section class="cards">
+      <!-- 6 cartes colorées -->
+      <!-- CARTE 0 -->
+      <div class="card employee-handbook">
+        <div 
+          class="card-plus"
+          (mouseenter)="onMouseEnter(0)"
+          (mouseleave)="onMouseLeave(0)"
+        >
+          +
+          <!-- Tooltip -->
+          
+           @if (showTooltip[0]){
+            <div class="tool" >
+                <small>More information</small> 
+              </div>
+           }
+
+        </div>
+        <h2 class="card-title">Employee<br/>Handbook</h2>
+      </div>
+  
+      <!-- CARTE 1 -->
+      <div class="card project-reports">
+        <div 
+          class="card-plus"
+          (mouseenter)="onMouseEnter(1)"
+          (mouseleave)="onMouseLeave(1)"
+        >
+          +
+          @if (showTooltip[1]){
+            <div class="tool" >
+                <small>More information</small>
+              </div>
+           }
+
+        </div>
+        <h2 class="card-title">Project<br/>Reports</h2>
+      </div>
+  
+      <!-- CARTE 2 -->
+      <div class="card hiring-hub">
+        <div 
+          class="card-plus"
+          (mouseenter)="onMouseEnter(2)"
+          (mouseleave)="onMouseLeave(2)"
+        >
+          +
+          @if (showTooltip[2]){
+            <div class="tool" >
+                <small>More information</small>
+              </div>
+           }
+
+        </div>
+        <h2 class="card-title">Hiring Hub</h2>
+      </div>
+  
+      <!-- CARTE 3 -->
+      <div class="card annual-report">
+        <div 
+          class="card-plus"
+          (mouseenter)="onMouseEnter(3)"
+          (mouseleave)="onMouseLeave(3)"
+        >
+          +
+          @if (showTooltip[3]){
+            <div class="tool" >
+                <small>More information</small>
+              </div>
+           }
+
+        </div>
+        <h2 class="card-title">Annual<br/>Report</h2>
+      </div>
+  
+      <!-- CARTE 4 -->
+      <div class="card new-services">
+        <div  
+          class="card-plus"
+          (mouseenter)="onMouseEnter(4)"
+          (mouseleave)="onMouseLeave(4)"
+        >
+          <a href="task" >+</a>
+          @if (showTooltip[4]){
+            <div class="tool" >
+                <small>More information</small>
+              </div>
+           }
+
+        </div>
+        <h2 class="card-title">New<br/>Services</h2>
+      </div>
+  
+      <!-- CARTE 5 -->
+      <div class="card company-culture">
+        <div 
+          class="card-plus"
+          (mouseenter)="onMouseEnter(5)"
+          (mouseleave)="onMouseLeave(5)"
+        >
+          +
+          @if (showTooltip[5]){
+            <div class="tool" >
+                <small>More information</small>
+              </div>
+           }
+
+        </div>
+        <h2 class="card-title">Company<br/>Culture</h2>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Bouton flottant en bas à droite -->
+  <button class="add-button" (click)="onAddClick()">+</button>
+<!-- Modal (shows if showModal === true) -->
+@if (showModal) {
+  <div class="modal-backdrop"  (click)="closeModal()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2>Add new Project</h2>
+    
+        <!-- FORM: pass the form data to saveProject(...) on submit -->
+        <form #f="ngForm" (ngSubmit)="saveProject(f.value)">
+          <!-- Project Name -->
+          <div class="form-group">
+            <label for="name">Name of Project</label>
+            <input id="name" name="name" ngModel required />
+          </div>
+    
+          <!-- Description -->
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea
+              id="description"
+              name="description"
+              rows="3"
+              ngModel
+            ></textarea>
+          </div>
+    
+          <!-- Deadline -->
+          <div class="form-group">
+            <label for="deadline">Deadline</label>
+            <input id="deadline" type="date" name="deadline" ngModel />
+          </div>
+    
+          <!-- Actions -->
+          <div class="actions">
+            <button type="button" (click)="closeModal()">Cancel</button>
+            <button type="submit">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+}

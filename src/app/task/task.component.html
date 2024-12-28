@@ -1,0 +1,283 @@
+<!-- src/app/task/task.component.html -->
+
+<header class="header">
+    <div class="logo">
+      <span class="logo-text">PeakPerform</span>
+    </div>
+  </header>
+  <h1>Task</h1>
+  <main class="main-content">
+    <section class="cards">
+      <!-- 6 cartes colorées -->
+      <!-- CARTE 0 -->
+      <div class="card employee-handbook">
+        <div 
+          class="card-plus"
+          (mouseenter)="onMouseEnter(0)"
+          (mouseleave)="onMouseLeave(0)"
+        >
+          +
+          <!-- Tooltip -->
+          
+           @if (showTooltip[0]){
+            <div class="tool" >
+                <small>More information</small> 
+              </div>
+           }
+
+        </div>
+        <h2 class="card-title">Employee<br/>Handbook</h2>
+      </div>
+  
+      <!-- CARTE 1 -->
+      <div class="card project-reports">
+        <div 
+          class="card-plus"
+          (mouseenter)="onMouseEnter(1)"
+          (mouseleave)="onMouseLeave(1)"
+        >
+          +
+          @if (showTooltip[1]){
+            <div class="tool" >
+                <small>More information</small>
+              </div>
+           }
+
+        </div>
+        <h2 class="card-title">Project<br/>Reports</h2>
+      </div>
+  
+      <!-- CARTE 2 -->
+      <div class="card hiring-hub">
+        <div 
+          class="card-plus"
+          (mouseenter)="onMouseEnter(2)"
+          (mouseleave)="onMouseLeave(2)"
+        >
+          +
+          @if (showTooltip[2]){
+            <div class="tool" >
+                <small>More information</small>
+              </div>
+           }
+
+        </div>
+        <h2 class="card-title">Hiring Hub</h2>
+      </div>
+  
+      <!-- CARTE 3 -->
+      <div class="card annual-report">
+        <div 
+          class="card-plus"
+          (mouseenter)="onMouseEnter(3)"
+          (mouseleave)="onMouseLeave(3)"
+        >
+          +
+          @if (showTooltip[3]){
+            <div class="tool" >
+                <small>More information</small>
+              </div>
+           }
+
+        </div>
+        <h2 class="card-title">Annual<br/>Report</h2>
+      </div>
+  
+      <!-- CARTE 4 -->
+      <div class="card new-services">
+        <div  
+          class="card-plus"
+          (mouseenter)="onMouseEnter(4)"
+          (mouseleave)="onMouseLeave(4)"
+        >
+          <a href="taskpage" >+</a>
+          @if (showTooltip[4]){
+            <div class="tool" >
+                <small>More information</small>
+              </div>
+           }
+
+        </div>
+        <h2 class="card-title">New<br/>Services</h2>
+      </div>
+  
+      <!-- CARTE 5 -->
+      <div class="card company-culture">
+        <div 
+          class="card-plus"
+          (mouseenter)="onMouseEnter(5)"
+          (mouseleave)="onMouseLeave(5)"
+        >
+          +
+          @if (showTooltip[5]){
+            <div class="tool" >
+                <small>More information</small>
+              </div>
+           }
+
+        </div>
+        <h2 class="card-title">Company<br/>Culture</h2>
+      </div>
+      <!-- test card 6 -->
+       <mat-card class="card company-culture" appearance="outlined">
+        <mat-card-content>Simple card</mat-card-content>
+        <div 
+          class="card-plus"
+          (mouseenter)="onMouseEnter(5)"
+          (mouseleave)="onMouseLeave(5)"
+        >
+          +
+          @if (showTooltip[5]){
+            <div class="tool" >
+                <small>More information</small>
+              </div>
+           }
+
+        </div>
+      </mat-card>
+       <!-- fin test card 6 -->
+      
+      
+
+
+    </section>
+  </main>
+
+  <!-- Bouton flottant en bas à droite -->
+  <button class="add-button" (click)="openDialog()">+</button>
+  
+<!-- Modal (shows if showModal === true) -->
+@if (showDialog) {
+    <!-- MODAL -->
+<div class="dialog-backdrop" (click)="closeDialog()">
+    <div class="dialog-content" (click)="$event.stopPropagation()">
+      
+      <h2>Create a New Task</h2>
+      
+      <div class="dialog-body">
+        <!-- LEFT COLUMN -->
+        <div class="left-col">
+          <!-- Task name -->
+          <div class="form-group">
+            <label for="taskName">Task Name</label>
+            <input 
+              id="taskName" 
+              [(ngModel)]="taskName" 
+              placeholder="Enter task name"
+            />
+          </div>
+  
+          <!-- Description -->
+          <div class="form-group">
+            <label for="desc">Description</label>
+            <textarea 
+              id="desc" 
+              rows="2" 
+              [(ngModel)]="taskDescription"
+              placeholder="Short description"
+            ></textarea>
+          </div>
+  
+          <!-- Effects (eight) -->
+          <div class="form-group effects-group">
+            <label>Effects (0-100%)</label>
+            <mat-form-field>
+              <mat-label>Employee qualifications</mat-label>
+              <mat-select>
+                @for (qualif of qualifications; track qualif) {
+                  <mat-option [value]="qualif.value">{{qualif.viewValue}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Working environment</mat-label>
+              <mat-select>
+                @for (wenv of working_environment; track wenv) {
+                  <mat-option [value]="wenv.value">{{wenv.viewValue}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Quality management</mat-label>
+              <mat-select>
+                @for (qualit of qualities; track qualit) {
+                  <mat-option [value]="qualit.value">{{qualit.viewValue}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Lead Time</mat-label>
+              <mat-select>
+                @for (leadt of lead_time; track leadt) {
+                  <mat-option [value]="leadt.value">{{leadt.viewValue}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Capacity</mat-label>
+              <mat-select>
+                @for (cap of capacity; track cap) {
+                  <mat-option [value]="cap.value">{{cap.viewValue}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Economic Situation</mat-label>
+              <mat-select>
+                @for (eco of economics; track eco) {
+                  <mat-option [value]="eco.value">{{eco.viewValue}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Independence from suppliers</mat-label>
+              <mat-select>
+                @for (indep of independences; track indep) {
+                  <mat-option [value]="indep.value">{{indep.viewValue}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>Equity capital</mat-label>
+              <mat-select>
+                @for (capi of capital; track capi) {
+                  <mat-option [value]="capi.value">{{capi.viewValue}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+          
+          
+  
+          <!-- Subtasks: input + add -->
+          <div class="subtasks-section">
+            <label>Subtasks</label>
+            <div class="subtask-input">
+              <input 
+                [(ngModel)]="newSubtask" 
+                placeholder="Add a subtask"
+              />
+              <button type="button"  (click)="addSubtask()">Add</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- RIGHT COLUMN: list of added subtasks -->
+        <div class="right-col">
+          <h3>Subtasks Added</h3>
+          <ul>
+            @for(s of subtasks; track s) {<li >{{ s }}</li>}
+          </ul>
+        </div>
+      </div>
+  
+      <!-- ACTIONS: Save and Cancel -->
+      <div class="dialog-actions">
+        <button type="button" (click)="closeDialog()">Cancel</button>
+        <button type="button" (click)="saveTask()">Save</button>
+      </div>
+    </div>
+  </div>
+}
+
+  
