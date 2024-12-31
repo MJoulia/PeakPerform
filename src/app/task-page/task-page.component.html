@@ -141,37 +141,42 @@
       
     </div>
     
-    <div >
+    <div class="sidebar-right">
       <canvas #radarChartCanvas></canvas>
-    </div>
+    </div>      
+    
+          
     
 
 </div>
-  <div class="bottom-section">
-    <div class="subtask-list">
-      <h2>Subtasks</h2>
-      <ul>
-        <li>Subtask 1 
-            <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-                <mat-button-toggle value="bold">Done</mat-button-toggle>
-                <mat-button-toggle value="italic">Not Yet!!</mat-button-toggle>
-               
-            </mat-button-toggle-group>
-        </li>
-        <li>Subtask 2</li>
-        <li>Subtask 3</li>
-      </ul>
-    </div>
-    <div class="circle-diagram">
-        <div class="container">
-            <div class="text-section">
-              <h1>Problem</h1>
-              <p>Substantiate your definition of the problem with a chart of your choice from the object panel, and add details here.</p>
-            </div>
-            <div class="chart-section">
-              <div class="chart"></div>
-            </div>
-        </div>
-      
+
+
+<div class="bottom-section">
+  <!-- Section gauche : Liste des sous-tâches -->
+  <div class="subtask-list">
+    <h2>Subtasks</h2>
+    <ul>
+      <li>Subtask 1
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle value="bold">Done</mat-button-toggle>
+          <mat-button-toggle value="italic">Not Yet!!</mat-button-toggle>
+        </mat-button-toggle-group>
+      </li>
+      <li>Subtask 2</li>
+      <li>Subtask 3</li>
+    </ul>
+  </div>
+
+  <!-- Section droite : Diagramme circulaire -->
+  <div class="circle-diagram">
+    <div class="container">
+      <div class="text-section">
+        <h1>Problem</h1>
+        <p>Substantiate your definition of the problem with a chart of your choice from the object panel, and add details here.</p>
+      </div>
+      <div class="chart-section">
+        <canvas #doughnutChart></canvas>
+      </div>
     </div>
   </div>
+</div>

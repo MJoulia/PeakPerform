@@ -33,8 +33,47 @@ export class TaskPageComponent implements AfterViewInit {
   }
 
   @ViewChild('radarChartCanvas') radarChartCanvas!: ElementRef<HTMLCanvasElement>; // Référence au canvas
+  @ViewChild('doughnutChart') doughnutChartRef!: ElementRef<HTMLCanvasElement>;
 
   radarChart!: Chart; // Variable pour stocker l'instance du graphique
+
+  createDoughnutChart(): void {
+    const ctx = this.doughnutChartRef.nativeElement.getContext('2d');
+    if (ctx) {
+      new Chart(ctx, {
+        type: 'doughnut', // Type of chart
+        data: {
+          labels: ['Red', 'Blue', 'Yellow'], // Replace with your labels
+          datasets: [
+            {
+              label: 'Dataset',
+              data: [100, 50, 25], // Replace with your data
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+              ],
+              
+              hoverOffset:4
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top' // Position of legend
+            },
+            tooltip: {
+              enabled: true
+            }
+          }
+        }
+      });
+    } else {
+      console.error('Failed to get context for Doughnut Chart');
+    }
+  }
 
   ngAfterViewInit(): void {
     const ctx = this.radarChartCanvas.nativeElement.getContext('2d'); // Obtenez le contexte 2D
@@ -92,5 +131,7 @@ export class TaskPageComponent implements AfterViewInit {
     } else {
       console.error('Le contexte du canvas est null.');
     }
+
+    this.createDoughnutChart();
   }
 }

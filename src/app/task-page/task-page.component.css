@@ -1,21 +1,46 @@
 
   .task-details {
-    padding: 1rem;
-    background-color: #f0f0f0;
+    padding: 1.5rem;
+    background-color: #122b47;
+    color: #fff;
     text-align: center;
-    width: 100%;
-    box-sizing: border-box;
+    font-size: 1.8rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   .main-content {
     display: flex;
-    flex: 1;
-    padding: 1rem;
+    padding: 2rem;
+    gap: 1.5rem;
   }
+
+mat-slider:hover {
+  background-color: #ddd;
+}
+
   .sidebar-left, .sidebar-right {
     flex: 1;
-    padding: 1rem;
-    background-color: #cfaeaa;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
+
+  .sidebar-left h2 {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+  }
+
+.sidebar-left .sidebar-right div{
+  display: flex;
+  align-items: center;
+  gap: 100px;
+  margin-bottom: 0.5rem;
+}
+
+
+
   .diagram, .circle-diagram {
     background-color: #dee2e6;
     height: 100%;
@@ -34,16 +59,22 @@
     display: flex;
     background-color: #f8f9fa;
     padding: 1rem;
+    gap: 2rem;
+    border-top: 1px solid #eaeaea;
   }
   .subtask-list {
     flex: 1;
-    padding-right: 1rem;
-    background-color: #e9ecef;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   .circle-diagram {
     flex: 1;
-    padding-left: 1rem;
-    background-color: #dee2e6;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
 
@@ -139,8 +170,16 @@
   }
 
   canvas {
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 100%;
+    max-height: 400px;
+    margin: auto;
+    display: block;
   }
 
 
+  @media(max-width: 768px){
+    .bottom-section{
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
