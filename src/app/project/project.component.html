@@ -1,165 +1,99 @@
-<!-- src/app/project/project.component.html -->
-
 <header class="header">
-    <div class="logo">
-      <span class="logo-text">PeakPerform</span>
-    </div>
-  </header>
-  <h1>Project</h1>
-  <main class="main-content">
-    <section class="cards">
-      <!-- 6 cartes colorées -->
-      <!-- CARTE 0 -->
-      <div class="card employee-handbook">
-        <div 
-          class="card-plus"
-          (mouseenter)="onMouseEnter(0)"
-          (mouseleave)="onMouseLeave(0)"
-        >
-          +
-          <!-- Tooltip -->
-          
-           @if (showTooltip[0]){
-            <div class="tool" >
-                <small>More information</small> 
-              </div>
-           }
+  <div class="logo">
+    <span class="logo-text">PeakPerform</span>
+  </div>
+</header>
 
-        </div>
-        <h2 class="card-title">Employee<br/>Handbook</h2>
-      </div>
-  
-      <!-- CARTE 1 -->
-      <div class="card project-reports">
-        <div 
-          class="card-plus"
-          (mouseenter)="onMouseEnter(1)"
-          (mouseleave)="onMouseLeave(1)"
-        >
-          +
-          @if (showTooltip[1]){
-            <div class="tool" >
-                <small>More information</small>
-              </div>
-           }
+<h1>Project</h1>
 
-        </div>
-        <h2 class="card-title">Project<br/>Reports</h2>
-      </div>
-  
-      <!-- CARTE 2 -->
-      <div class="card hiring-hub">
-        <div 
-          class="card-plus"
-          (mouseenter)="onMouseEnter(2)"
-          (mouseleave)="onMouseLeave(2)"
-        >
-          +
-          @if (showTooltip[2]){
-            <div class="tool" >
-                <small>More information</small>
-              </div>
-           }
+<main class="main-content">
+  <section class="cards">
+    <!-- Cartes générées dynamiquement -->
+    <div
+      class="card"
+      [ngClass]="project.colorClass"
+      *ngFor="let project of projects; let i = index"
+    >
 
-        </div>
-        <h2 class="card-title">Hiring Hub</h2>
-      </div>
-  
-      <!-- CARTE 3 -->
-      <div class="card annual-report">
-        <div 
-          class="card-plus"
-          (mouseenter)="onMouseEnter(3)"
-          (mouseleave)="onMouseLeave(3)"
-        >
-          +
-          @if (showTooltip[3]){
-            <div class="tool" >
-                <small>More information</small>
-              </div>
-           }
-
-        </div>
-        <h2 class="card-title">Annual<br/>Report</h2>
-      </div>
-  
-      <!-- CARTE 4 -->
-      <div class="card new-services">
-        <div  
-          class="card-plus"
-          (mouseenter)="onMouseEnter(4)"
-          (mouseleave)="onMouseLeave(4)"
-        >
-          <a href="task" >+</a>
-          @if (showTooltip[4]){
-            <div class="tool" >
-                <small>More information</small>
-              </div>
-           }
-
-        </div>
-        <h2 class="card-title">New<br/>Services</h2>
-      </div>
-  
-      <!-- CARTE 5 -->
-      <div class="card company-culture">
-        <div 
-          class="card-plus"
-          (mouseenter)="onMouseEnter(5)"
-          (mouseleave)="onMouseLeave(5)"
-        >
-          +
-          @if (showTooltip[5]){
-            <div class="tool" >
-                <small>More information</small>
-              </div>
-           }
-
-        </div>
-        <h2 class="card-title">Company<br/>Culture</h2>
-      </div>
-    </section>
-  </main>
-  
-  <!-- Bouton flottant en bas à droite -->
-  <button class="add-button" (click)="onAddClick()">+</button>
-<!-- Modal (shows if showModal === true) -->
-@if (showModal) {
-  <div class="modal-backdrop"  (click)="closeModal()">
-      <div class="modal-content" (click)="$event.stopPropagation()">
-        <h2>Add new Project</h2>
+    <!-- Icône SVG en haut à gauche -->
     
-        <!-- FORM: pass the form data to saveProject(...) on submit -->
-        <form #f="ngForm" (ngSubmit)="saveProject(f.value)">
-          <!-- Project Name -->
-          <div class="form-group">
-            <label for="name">Name of Project</label>
-            <input id="name" name="name" ngModel required />
-          </div>
-    
-          <!-- Description -->
-          <div class="form-group">
-            <label for="description">Description</label>
-            <textarea
-              id="description"
-              name="description"
-              rows="3"
-              ngModel
-            ></textarea>
-          </div>
-    
-          <!-- Deadline -->
-          <div class="form-group">
-            <label for="deadline">Deadline</label>
-            <input id="deadline" type="date" name="deadline" ngModel />
-          </div>
-    
-          <!-- Actions -->
-          <div class="actions">
-            <button type="button" (click)="closeModal()">Cancel</button>
-            <button type="submit">Save</button>
-          </div>
-        </form>
+      <a (click)="confirmNavigation($event)" class="card-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+        <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
+      </svg>
+    </a>
+
+    <div class="card-menu" 
+      (mouseenter)="onMouseEnter(i)"
+      (mouseleave)="onMouseLeave(i)">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+        <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
+      </svg>
+      <div *ngIf="showTooltip[i]" class="tool">
+        <small>More information</small>
       </div>
     </div>
-}
+
+    <!-- Contenu de la carte -->
+      <!--<div
+        class="card-plus"
+        (mouseenter)="onMouseEnter(i)"
+        (mouseleave)="onMouseLeave(i)"
+      >
+        +
+        
+        <div *ngIf="showTooltip[i]" class="tool">
+          <small>More information</small>
+        </div>
+      </div>-->
+      <h2 class="card-title">{{ project.name }}</h2>
+      <!--<p><strong>ID:</strong> {{ project.id }}</p>-->
+      <!--<p><strong>Description:</strong> {{ project.description }}</p>-->
+      <p><strong>Deadline:</strong> {{ project.deadline }}</p>
+      <p><strong>Date Created:</strong> {{ project.dateCreated | date: 'short' }}</p>
+    </div>
+  </section>
+</main>
+
+<!-- Bouton flottant pour ajouter un projet -->
+<button class="add-button" (click)="onAddClick()">+</button>
+
+<!-- Modale pour ajouter un projet -->
+<div class="modal-backdrop" *ngIf="showModal" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>Add new Project</h2>
+
+    <!-- FORM: pass the form data to saveProject(...) on submit -->
+    <form #f="ngForm" (ngSubmit)="saveProject(f.value)">
+      <!-- Project Name -->
+      <div class="form-group">
+        <label for="name">Name of Project</label>
+        <input id="name" name="name" ngModel required />
+      </div>
+
+      <!-- Description -->
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          rows="3"
+          ngModel
+          required
+        ></textarea>
+      </div>
+
+      <!-- Deadline -->
+      <div class="form-group">
+        <label for="deadline">Deadline</label>
+        <input id="deadline" type="date" name="deadline" ngModel required />
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button type="button" (click)="closeModal()">Cancel</button>
+        <button type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
