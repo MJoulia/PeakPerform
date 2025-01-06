@@ -1,0 +1,40 @@
+/* Exemple de style basique pour la navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f9fa; /* Couleur de fond */
+  padding: 10px 20px;       /* Espace interne */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-name {
+  font-weight: 500;
+  color: #555;
+}
+
+/* Bouton de déconnexion */
+.logout-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.logout-btn:hover {
+  color: #000;
+}

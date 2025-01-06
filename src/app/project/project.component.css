@@ -207,3 +207,8 @@
   width: 30px; /* Taille de l'icône */
   height: 30px;
 }
+
+main {
+  margin-left: 270px;
+  padding: 20px;
+}

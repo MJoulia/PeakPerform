@@ -1,0 +1,60 @@
+/* Style global de la barre de navigation verticale */
+.navbar-vertical {
+    width: 250px;
+    background-color: #f8f9fa;
+    height: 100vh;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 55px;
+    height: calc(100vh - 55px);
+    left: 0;
+    overflow-y: auto;
+  }
+  
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu li {
+    margin-bottom: 10px;
+  }
+  
+  .menu > li > a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+    border-radius: 4px;
+  }
+  
+  .menu > li > a:hover {
+    background-color: #e9ecef;
+  }
+  
+  .submenu {
+    list-style: none;
+    padding-left: 20px;
+    display: none;
+  }
+  
+  .menu li:hover .submenu {
+    display: block;
+  }
+  
+  .submenu li a {
+    text-decoration: none;
+    color: #555;
+    font-weight: normal;
+    padding: 8px 10px;
+    display: block;
+    border-radius: 4px;
+  }
+  
+  .submenu li a:hover {
+    background-color: #e9ecef;
+  }
+  

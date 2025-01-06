@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { NavbarComponent } from "../navbar/navbar.component";
+import { NavbarverticalComponent } from '../navbarvertical/navbarvertical.component';
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule, NavbarComponent, NavbarverticalComponent],
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css'],
 })
