@@ -4,6 +4,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
+import { NavbarComponent } from "../navbar/navbar.component";
+import { NavbarverticalComponent } from '../navbarvertical/navbarvertical.component';
+import { ApiService } from '../api.service';
+import { NgClass } from '@angular/common';
+import { DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
+
 
 export interface TaskData {
   name: string;
@@ -54,7 +61,17 @@ export interface Capital {
 
 @Component({
   selector: 'app-task',
-  imports: [FormsModule, MatFormFieldModule,MatInputModule,MatSelectModule, MatCardModule],
+  imports: [
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule, 
+    MatCardModule,
+    NavbarComponent, 
+    NavbarverticalComponent,
+    DatePipe, 
+    NgClass,
+  ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'
 })
@@ -62,9 +79,20 @@ export interface Capital {
 
 
 export class TaskComponent {
+  constructor(  private apiService: ApiService) { }
 
   // 6 cartes -> un booléen par carte pour gérer l'affichage du tooltip
   showTooltip: boolean[] = [false, false, false, false, false, false];
+
+
+  confirmNavigation(event: Event) {
+    event.preventDefault();
+    if (confirm('Do you really want to navigate?')) {
+      console.log('Navigation confirmed');
+    } else {
+      console.log('Navigation cancelled');
+    }
+  }
 
   // Méthode pour activer/désactiver le tooltip d'une carte précise
   onMouseEnter(index: number) {
@@ -332,5 +360,22 @@ export class TaskComponent {
 
     // Close dialog
     this.closeDialog();
+
+    
+
   }
+
+  // get task data from database
+  items: any[] = [];
+  ngOnInit() {
+    this.apiService.gettaskdata().subscribe(
+      (data) => {
+        this.items = data;
+        console.log(this.items)
+      },
+      (error) => {
+        console.error('Erreur to get the items :', error);
+      } 
+    );
+ }
 }

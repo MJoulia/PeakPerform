@@ -21,4 +21,8 @@ export class ApiService {
     return this.http.post(`${this.baseUrl}/project`, projectData);
   }
 
+  gettaskdata(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/alltask`);
+  }
+
 }

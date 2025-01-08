@@ -1,24 +1,13 @@
 <nav class="navbar-vertical">
-    <ul class="menu">
-      <li><a href="#">Chart.js</a></li>
-      <li><a href="#">Getting Started</a></li>
-      <li>
-        <a href="#">General</a>
-        <ul class="submenu">
-          <li><a href="#"> Accessibility</a></li>
-          <li><a href="#">Colors</a></li>
-          <li><a href="#">Data structures</a></li>
-          <li><a href="#">Fonts</a></li>
-          <li><a href="#">Options</a></li>
-          <li><a href="#">Padding</a></li>
-          <li><a href="#">Performance</a></li>
-        </ul>
+  <ul class="menu">
+    <!-- Utilisation de project[0] pour afficher le titre -->
+     <div *ngFor="let project of items; let i = index">
+      <li >
+        <a href="#">{{ project[0] }}</a>
       </li>
-      <li><a href="#">Configuration</a></li>
-      <li><a href="#">Chart Types</a></li>
-      <li><a href="#">Axes</a></li>
-      <li><a href="#">Developers</a></li>
-      <li><a href="#">Migration</a></li>
-    </ul>
-  </nav>
-  
+     </div>
+ 
+    
+
+  </ul>
+</nav>

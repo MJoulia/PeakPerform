@@ -2,281 +2,196 @@
 
 /* 1) Reset & styles globaux */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  body {
-    font-family: 'Georgia', serif;
-    background-color: #fff7ea;  /* fond */
-    color: #444;               /* texte par défaut */
-    min-height: 100vh;
-  }
-  
-  /* 2) Header / Logo */
-  .header {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    background-color: #fff7ea;
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo-text {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #8a3ffc;
-  }
-  
-  /* 3) Contenu principal */
-  .main-content {
-    padding: 1rem;
-  }
-  
-  /* Grille : 2 lignes × 3 colonnes (sur grand écran) */
+
+body {
+  font-family: 'Georgia', serif;
+  background-color: #fff7ea;  /* fond */
+  color: #444;               /* texte par défaut */
+  min-height: 100vh;
+}
+
+/* 2) Header / Logo */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff7ea;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #8a3ffc;
+}
+
+/* 3) Contenu principal */
+.main-content {
+  padding: 1rem;
+}
+
+/* Grille : 2 lignes × 3 colonnes (sur grand écran) */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* 4) Style commun aux cartes */
+.card {
+  position: relative;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  height: 150px;
+  color: #fff; /* texte par défaut sur fond coloré */
+}
+
+.card-title {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+}
+
+.card-plus {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+/* On peut étendre la règle existante ou en créer une nouvelle */
+.card-plus:hover {
+  color: #fff; /* Changement de couleur au survol, si souhaité */
+}
+
+
+.tool{
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  transform: translateY(0px);
+  background-color: rgba(255, 255, 255, 0.801);
+  color: #000000;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 9910999;
+}
+
+/* 5) Couleurs des cartes */
+.employee-handbook {
+  background-color: #caa2e2;
+}
+
+.project-reports {
+  background-color: #cfa34e;
+}
+
+.hiring-hub {
+  background-color: #f57c3b;
+}
+
+.annual-report {
+  background-color: #ec6a20;
+}
+
+.new-services {
+  background-color: #b3c6e0;
+  color: #000;
+}
+
+.company-culture {
+  background-color: #f5d8a6;
+  color: #000;
+}
+
+/* 6) Media query pour passer en 1 colonne sur petit écran */
+@media (max-width: 768px) {
   .cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    grid-template-columns: 1fr;
   }
-  
-  /* 4) Style commun aux cartes */
-  .card {
-    position: relative;
-    padding: 1rem;
-    border-radius: 8px;
-    display: flex;
+
+  .dialog-body {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-weight: bold;
-    height: 150px;
-    color: #fff; /* texte par défaut sur fond coloré */
-  }
-  
-  .card-title {
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
-  }
-  
-  .card-plus {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    font-size: 1.5rem;
-    color: rgba(255, 255, 255, 0.6);
-    cursor: pointer;
-  }
-  
-  /* On peut étendre la règle existante ou en créer une nouvelle */
-  .card-plus:hover {
-    color: #fff; /* Changement de couleur au survol, si souhaité */
   }
 
+}
 
-  .tool{
-    position: absolute;
-    bottom: -20px;
-    right: 0;
-    transform: translateY(0px);
-    background-color: rgba(255, 255, 255, 0.801);
-    color: #000000;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 9910999;
-  }
+/* 7) Bouton d’ajout flottant en bas à droite */
+.add-button {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background-color: #28a745; /* Vert par exemple */
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
 
-  /* 5) Couleurs des cartes */
-  .employee-handbook {
-    background-color: #caa2e2;
-  }
-  
-  .project-reports {
-    background-color: #cfa34e;
-  }
-  
-  .hiring-hub {
-    background-color: #f57c3b;
-  }
-  
-  .annual-report {
-    background-color: #ec6a20;
-  }
-  
-  .new-services {
-    background-color: #b3c6e0;
-    color: #000;
-  }
-  
-  .company-culture {
-    background-color: #f5d8a6;
-    color: #000;
-  }
-  
-  /* 6) Media query pour passer en 1 colonne sur petit écran */
-  @media (max-width: 768px) {
-    .cards {
-      grid-template-columns: 1fr;
-    }
-
-    .dialog-body {
-      flex-direction: column;
-    }
-
-  }
-  
-  /* 7) Bouton d’ajout flottant en bas à droite */
-  .add-button {
-    position: fixed;
-    right: 1rem;
-    bottom: 1rem;
-    width: 50px;
-    height: 50px;
-    border: none;
-    border-radius: 50%;
-    background-color: #28a745; /* Vert par exemple */
-    color: #fff;
-    font-size: 2rem;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  }
-  
-  /* Optionnel : au survol, on peut modifier la couleur */
-  .add-button:hover {
-    background-color: #218838; /* Vert plus foncé */
-  }
+/* Optionnel : au survol, on peut modifier la couleur */
+.add-button:hover {
+  background-color: #218838; /* Vert plus foncé */
+}
 
 
 
 /* 5) MODALE */
 .modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* léger voile gris */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-  .modal-content {
-    background: #fff;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    width: 400px;
-    max-width: 90%;
-  }
-  
-  .modal-content h2 {
-    margin-bottom: 1rem;
-  }
-  
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 0.3rem;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 0.5rem;
-    font: inherit;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-  }
-  
-  .actions button {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .actions button[type="submit"] {
-    background-color: #28a745;
-    color: white;
-  }
-  
-  .actions button[type="button"] {
-    background-color: #d9534f;
-    color: white;
-  }
-  
-  /* DIALOG (MODAL) */
-.dialog-backdrop {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4); /* léger voile gris */
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
+  z-index: 1000;
 }
 
-.dialog-content {
+.modal-content {
   background: #fff;
   padding: 1rem 2rem;
   border-radius: 8px;
-  width: 700px;
+  width: 400px;
   max-width: 90%;
-  max-height: 90%;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
 }
 
-.dialog-content h2 {
-  margin-bottom: 0.5rem;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 0.5rem;
-}
-
-.dialog-body {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+.modal-content h2 {
   margin-bottom: 1rem;
 }
 
-/* LEFT COL */
-.left-col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.form-group {
+  margin-bottom: 1rem;
 }
 
 .form-group label {
+  display: block;
   font-weight: bold;
   margin-bottom: 0.3rem;
-  display: block;
 }
 
 .form-group input,
@@ -288,98 +203,189 @@
   border-radius: 4px;
 }
 
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.actions button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.actions button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+}
+
+.actions button[type="button"] {
+  background-color: #d9534f;
+  color: white;
+}
+
+/* DIALOG (MODAL) */
+.dialog-backdrop {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0,0,0,0.4);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 999;
+}
+
+.dialog-content {
+background: #fff;
+padding: 1rem 2rem;
+border-radius: 8px;
+width: 700px;
+max-width: 90%;
+max-height: 90%;
+overflow-y: auto;
+display: flex;
+flex-direction: column;
+}
+
+.dialog-content h2 {
+margin-bottom: 0.5rem;
+border-bottom: 1px solid #ccc;
+padding-bottom: 0.5rem;
+}
+
+.dialog-body {
+display: flex;
+gap: 1rem;
+margin-top: 1rem;
+margin-bottom: 1rem;
+}
+
+/* LEFT COL */
+.left-col {
+flex: 1;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+}
+
+.form-group label {
+font-weight: bold;
+margin-bottom: 0.3rem;
+display: block;
+}
+
+.form-group input,
+.form-group textarea {
+width: 100%;
+padding: 0.5rem;
+font: inherit;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+
 /* Effects group */
 .effects-group {
-  background: #f7f7f7;
-  padding: 0.5rem;
-  border-radius: 4px;
+background: #f7f7f7;
+padding: 0.5rem;
+border-radius: 4px;
 }
 
 .effects-group div {
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+margin-bottom: 0.5rem;
+display: flex;
+align-items: center;
+gap: 0.5rem;
 }
 
 /* Subtasks */
 .subtasks-section {
-  background: #f7f7f7;
-  padding: 0.5rem;
-  border-radius: 4px;
+background: #f7f7f7;
+padding: 0.5rem;
+border-radius: 4px;
 }
 
 .subtask-input {
-  display: flex;
-  gap: 0.5rem;
+display: flex;
+gap: 0.5rem;
 }
 
 .subtask-input input {
-  flex: 1;
+flex: 1;
 }
 
 /* RIGHT COL */
 .right-col {
-  flex: 1;
-  background-color: #f7f7f7;
-  border-radius: 4px;
-  padding: 0.5rem;
+flex: 1;
+background-color: #f7f7f7;
+border-radius: 4px;
+padding: 0.5rem;
 }
 
 .right-col h3 {
-  margin-bottom: 0.5rem;
+margin-bottom: 0.5rem;
 }
 
 .right-col ul {
-  list-style: disc;
-  padding-left: 1.5rem;
+list-style: disc;
+padding-left: 1.5rem;
 }
 
 /* ACTIONS (bottom of dialog) */
 .dialog-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-  margin-top: auto;
-  padding-top: 1rem;
-  border-top: 1px solid #ccc;
+display: flex;
+justify-content: flex-end;
+gap: 1rem;
+margin-top: auto;
+padding-top: 1rem;
+border-top: 1px solid #ccc;
 }
 
 .dialog-actions button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
-  font: inherit;
-  cursor: pointer;
+padding: 0.5rem 1rem;
+border: none;
+border-radius: 4px;
+font: inherit;
+cursor: pointer;
 }
 
 .subtasks-section {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-  margin-top: auto;
-  padding-top: 1rem;
-  border-top: 1px solid #ccc;
+display: flex;
+justify-content: flex-end;
+gap: 1rem;
+margin-top: auto;
+padding-top: 1rem;
+border-top: 1px solid #ccc;
 }
 
 .subtasks-section button{
-  background-color: #4CAF50;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
-  font: inherit;
-  cursor: pointer;
+background-color: #4CAF50;
+color: white;
+padding: 0.5rem 1rem;
+border: none;
+border-radius: 4px;
+font: inherit;
+cursor: pointer;
 }
 
 
 
 .dialog-actions button:nth-child(1) {
-  background-color: #c7ad71; /* Cancel button: red */
-  color: #fff;
+background-color: #c7ad71; /* Cancel button: red */
+color: #fff;
 }
 
 .dialog-actions button:nth-child(2) {
-  background-color: #31cef6; /* Save button: green */
-  color: #fff;
+background-color: #31cef6; /* Save button: green */
+color: #fff;
+}
+
+
+main {
+margin-left: 250px;
+padding: 20px;
 }
