@@ -9,10 +9,6 @@
 </header>
 
 
-
-
-
-
 <main class="main-content">
   <h1>Project</h1>
   <section class="cards">
@@ -20,7 +16,7 @@
     <div
       class="card"
       [ngClass]="project.colorClass"
-      *ngFor="let project of projects; let i = index"
+      *ngFor="let project of items; let i = index"
     >
 
     <!-- Icône SVG en haut à gauche -->
@@ -55,11 +51,11 @@
           <small>More information</small>
         </div>
       </div>-->
-      <h2 class="card-title">{{ project.name }}</h2>
+      <h2 class="card-title">{{ project[0]}}</h2>
       <!--<p><strong>ID:</strong> {{ project.id }}</p>-->
       <!--<p><strong>Description:</strong> {{ project.description }}</p>-->
-      <p><strong>Deadline:</strong> {{ project.deadline }}</p>
-      <p><strong>Date Created:</strong> {{ project.dateCreated | date: 'short' }}</p>
+      <p><strong>Deadline:</strong> {{ project[1] }}</p>
+      <p><strong>Date Created:</strong> {{ project[2] | date: 'short' }}</p>
     </div>
   </section>
 </main>
@@ -76,16 +72,16 @@
     <form #f="ngForm" (ngSubmit)="saveProject(f.value)">
       <!-- Project Name -->
       <div class="form-group">
-        <label for="name">Name of Project</label>
-        <input id="name" name="name" ngModel required />
+        <label for="project_title">Name of Project</label>
+        <input type="text" id="project_title" name="project_title" ngModel required />
       </div>
 
       <!-- Description -->
       <div class="form-group">
-        <label for="description">Description</label>
+        <label for="project_description">Description</label>
         <textarea
-          id="description"
-          name="description"
+          id="project_description"
+          name="project_description"
           rows="3"
           ngModel
           required
@@ -94,8 +90,8 @@
 
       <!-- Deadline -->
       <div class="form-group">
-        <label for="deadline">Deadline</label>
-        <input id="deadline" type="date" name="deadline" ngModel required />
+        <label for="project_deadline">Deadline</label>
+        <input id="project_deadline" type="date" name="project_deadline" ngModel required />
       </div>
 
       <!-- Actions -->

@@ -14,4 +14,11 @@ export class ApiService {
   getItems(): Observable<any> {
     return this.http.get(`${this.baseUrl}/alldata`);
   }
+  getprojectsimdata(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/projectsimdata`);
+  }
+  addProject(projectData: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/project`, projectData);
+  }
+
 }

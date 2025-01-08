@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { NavbarverticalComponent } from '../navbarvertical/navbarvertical.component';
+import { ApiService } from '../api.service';
+
 
 @Component({
   selector: 'app-project',
@@ -15,7 +17,7 @@ import { NavbarverticalComponent } from '../navbarvertical/navbarvertical.compon
 
 
 export class ProjectComponent {
-  constructor( private router: Router) { }
+  constructor( private router: Router, private apiService: ApiService) { }
 
   confirmNavigation(event: Event) {
     event.preventDefault(); // Empêche le lien de naviguer immédiatement
@@ -62,29 +64,20 @@ export class ProjectComponent {
   }
 
   // Sauvegarder un projet avec un ID unique et une date de création
-  saveProject(data: { name: string; description: string; deadline: string }) {
-    if (data.name && data.description && data.deadline) {
-      const newProject = {
-        id: this.projects.length + 1, // ID généré automatiquement
-        name: data.name,
-        description: data.description,
-        deadline: data.deadline,
-        dateCreated: new Date().toISOString(), // Date de création ajoutée automatiquement
-        colorClass: 'custom-card', // Classe CSS pour les nouvelles cartes
-      };
+  saveProject(formData: any) {
+    
+    this.apiService.addProject(formData).subscribe(
+      (response) => {
+        console.log('Project added successfully!', response);
+        this.closeModal();
+        window.location.reload();
 
-      // Ajouter le projet à la liste
-      this.projects.push(newProject);
-
-      console.log('Projet enregistré :', newProject);
-
-      // Fermer la modale après l'ajout
-      this.closeModal();
-    } else {
-      alert('Veuillez remplir tous les champs !');
-    }
+      },
+      (error) => {
+        console.error('Error adding project', error);
+      }
+    );
   }
-
   // Gérer l'affichage du tooltip
   onMouseEnter(index: number) {
     this.showTooltip[index] = true;
@@ -92,5 +85,17 @@ export class ProjectComponent {
 
   onMouseLeave(index: number) {
     this.showTooltip[index] = false;
+  }
+  items: any[] = [];
+  ngOnInit() {
+    this.apiService.getprojectsimdata().subscribe(
+      (data) => {
+        this.items = data;
+        console.log(this.items)
+      },
+      (error) => {
+        console.error('Erreur to get the items :', error);
+      }
+    );
   }
 }
