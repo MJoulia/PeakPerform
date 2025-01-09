@@ -3,14 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { NavbarComponent } from "../navbar/navbar.component";
-import { NavbarverticalComponent } from '../navbarvertical/navbarvertical.component';
 import { ApiService } from '../api.service';
 
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [FormsModule, CommonModule, NavbarComponent, NavbarverticalComponent],
+  imports: [FormsModule, CommonModule, NavbarComponent],
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css'],
 })
@@ -27,26 +26,7 @@ export class ProjectComponent {
     }
   }
 
-  // Liste des projets
-  projects = [
-    {
-      id: 1,
-      name: 'Employee Handbook',
-      description: 'A comprehensive guide for employees.',
-      deadline: '2024-12-31',
-      dateCreated: new Date().toISOString(),
-      colorClass: 'employee-handbook',
-    },
-    {
-      id: 2,
-      name: 'Project Reports',
-      description: 'Monthly reports on project progress.',
-      deadline: '2024-12-25',
-      dateCreated: new Date().toISOString(),
-      colorClass: 'project-reports',
-    },
-  ];
-
+  
   // Gérer les tooltips
   showTooltip: boolean[] = [false, false];
 
@@ -86,6 +66,8 @@ export class ProjectComponent {
   onMouseLeave(index: number) {
     this.showTooltip[index] = false;
   }
+
+
   items: any[] = [];
   ngOnInit() {
     this.apiService.getprojectsimdata().subscribe(
@@ -98,4 +80,6 @@ export class ProjectComponent {
       }
     );
   }
+
+
 }

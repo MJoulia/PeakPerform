@@ -71,6 +71,7 @@ export interface Capital {
     NavbarverticalComponent,
     DatePipe, 
     NgClass,
+    CommonModule
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'

@@ -1,13 +1,5 @@
 
 <app-navbar></app-navbar>
-<app-navbarvertical></app-navbarvertical>
-
-<header class="header">
-  <div class="logo">
-    <span class="logo-text">PeakPerform</span>
-  </div>
-</header>
-
 
 <main class="main-content">
   <h1>Project</h1>
@@ -19,7 +11,6 @@
       *ngFor="let project of items; let i = index"
     >
 
-    <!-- Icône SVG en haut à gauche -->
     
       <a (click)="confirmNavigation($event)" class="card-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
@@ -38,22 +29,7 @@
         <small>More information</small>
       </div>
     </div>
-
-    <!-- Contenu de la carte -->
-      <!--<div
-        class="card-plus"
-        (mouseenter)="onMouseEnter(i)"
-        (mouseleave)="onMouseLeave(i)"
-      >
-        +
-        
-        <div *ngIf="showTooltip[i]" class="tool">
-          <small>More information</small>
-        </div>
-      </div>-->
       <h2 class="card-title">{{ project[0]}}</h2>
-      <!--<p><strong>ID:</strong> {{ project.id }}</p>-->
-      <!--<p><strong>Description:</strong> {{ project.description }}</p>-->
       <p><strong>Deadline:</strong> {{ project[1] }}</p>
       <p><strong>Date Created:</strong> {{ project[2] | date: 'short' }}</p>
     </div>
