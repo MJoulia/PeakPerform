@@ -6,6 +6,7 @@ import Chart from 'chart.js/auto'; // Import de Chart.js
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../api.service';
 import { inject } from '@angular/core';
+import { update_effects } from '../interface';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -16,17 +17,76 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TaskPageComponent implements AfterViewInit {
 task_id = 0
+hide_update_value: boolean = true
 route : ActivatedRoute = inject(ActivatedRoute);
+selectedQualification: number = 0;
+selectedWorkenv: number = 0;
+selectedQuality: number = 0;
+selectedLeadtime: number = 0;
+selectedCapacity: number = 0;
+selectedEconomic: number = 0;
+selectedIndependance: number = 0;
+selectedCapital: number = 0;
 
-
+items: any[] = [];
+chart_val: any[] = []
+data_val: any[] = []
  update_chart_value(newValue: number, num :number): void {
-    
-    var value = newValue / 10
+  switch (num) {
+    case 0: this.selectedQualification = newValue; break;
+    case 1: this.selectedWorkenv = newValue; break;
+    case 2: this.selectedQuality = newValue; break;
+    case 3: this.selectedLeadtime = newValue; break;
+    case 4: this.selectedCapacity = newValue; break;
+    case 5: this.selectedEconomic = newValue; break; 
+    case 6: this.selectedIndependance = newValue; break;
+    case 7: this.selectedCapital = newValue; break;
+    }
+    var value = newValue
     if (this.radarChart) {
       this.radarChart.data.datasets[0].data[num] = value;
       this.radarChart.update();
+      this.hide_update_value = false
     }
 
+  }
+  updateTask() {
+    const effects:update_effects = {
+      qualification: this.data_val[0],
+      workenv: this.data_val[1],
+      quality: this.data_val[2],
+      leadtime: this.data_val[3],
+      capacity: this.data_val[4],
+      economic: this.data_val[5],
+      independance: this.data_val[6],
+      capital: this.data_val[7],
+      task_id: this.task_id
+    }
+    console.log(effects)
+    this.apiService.updateEffectsOfTast(effects).subscribe({
+      next: (response) => {
+        console.log('Task updated successfully:', response);
+      },
+      error: (err) => {
+        console.error('Error updating task:', err);
+      },
+    });
+    this.hide_update_value = true
+  }
+  cancel(){
+    this.selectedQualification = [...this.chart_val][0]
+    this.selectedWorkenv =  [...this.chart_val][1]
+    this.selectedQuality =  [...this.chart_val][2]
+    this.selectedLeadtime = [...this.chart_val][3]
+    this.selectedCapacity = [...this.chart_val][4]
+    this.selectedEconomic = [...this.chart_val][5]
+    this.selectedIndependance =  [...this.chart_val][6]
+    this.selectedCapital = [...this.chart_val][7]
+    this.radarChart.data.datasets[0].data = [...this.chart_val]
+    this.radarChart.update();
+    this.hide_update_value = true
+    console.log(this.chart_val)
+  
   }
   formatLabel(value: number): string {
   
@@ -82,6 +142,9 @@ route : ActivatedRoute = inject(ActivatedRoute);
   }
 
   ngAfterViewInit(): void {
+ 
+  }
+  private createRadarChart(values: number[]): void {
     const ctx = this.radarChartCanvas.nativeElement.getContext('2d'); // Obtenez le contexte 2D
     if (ctx) { // Vérifiez que le contexte n'est pas null
       this.radarChart = new Chart(ctx, {
@@ -90,19 +153,9 @@ route : ActivatedRoute = inject(ActivatedRoute);
           labels: ['Employee Qualifications', 'Working Environment', 'Lead Time', ' Quality Management', 'Independance from Suppliers', 'Economic Situation', 'Capacity', ' Equity Capital'],
           datasets: [{
             label: 'Effects',
-            data: [0, 9, 3, 10, 3, 9, 3, 8], // Données du graphique
+            data: values,
             backgroundColor: 'rgba(54, 162, 235, 0.2)',
             borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 2,
-            pointBackgroundColor: 'rgba(255, 99, 132, 1)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgba(255, 99, 132, 1)',
-          },{
-          label: 'Effects',
-            data: [5, 0, 10, 1, 4, 6, 3, 8], // Données du graphique
-            backgroundColor: 'rgba(235, 54, 54, 0.2)',
-            borderColor: 'rgb(235, 54, 54)',
             borderWidth: 2,
             pointBackgroundColor: 'rgba(255, 99, 132, 1)',
             pointBorderColor: '#fff',
@@ -112,7 +165,8 @@ route : ActivatedRoute = inject(ActivatedRoute);
         ]
         },
         options: {
-          responsive: true, // pour l animation du graphe 
+          responsive: false,
+          maintainAspectRatio: false, // pour l animation du graphe 
           plugins: {
             legend: {
               display: false,
@@ -140,7 +194,6 @@ route : ActivatedRoute = inject(ActivatedRoute);
 
     this.createDoughnutChart();
   }
-
   
   constructor( private apiService: ApiService) {
     this.task_id = Number(this.route.snapshot.params['taskid'])
@@ -162,18 +215,41 @@ route : ActivatedRoute = inject(ActivatedRoute);
     console.log(`Subtask ${index + 1} is not done yet!`);
   }
 
-
-  items: any[] = [];
   ngOnInit() {
-    this.apiService.getprojectsimdata().subscribe(
+
+    
+    this.apiService.getTaskData(this.task_id).subscribe(
       (data) => {
-        this.items = data;
-        console.log(this.items)
+        this.update_data(data)
       },
       (error) => {
         console.error('Erreur to get the items :', error);
       }
+   
     );
-  }
-  
+
+ }
+ 
+ update_data(data:any){
+  this.items = data;
+  this.selectedQualification = this.items[0][4] 
+  this.selectedWorkenv =  this.items[0][5] 
+  this.selectedQuality =  this.items[0][6]
+  this.selectedLeadtime =  this.items[0][7]
+  this.selectedCapacity =  this.items[0][8]
+  this.selectedEconomic =  this.items[0][9]
+  this.selectedIndependance =  this.items[0][10]
+  this.selectedCapital =  this.items[0][11]
+  this.chart_val.push(this.items[0][4])
+  this.chart_val.push(this.items[0][5] )
+  this.chart_val.push(this.items[0][6])
+  this.chart_val.push( this.items[0][7])
+  this.chart_val.push( this.items[0][8])
+  this.chart_val.push( this.items[0][9])
+  this.chart_val.push(this.items[0][10])
+  this.chart_val.push(this.items[0][11])
+  this.data_val = [...this.chart_val]
+  this.createRadarChart(this.data_val)
+
+ }
 }

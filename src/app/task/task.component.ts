@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TaskData, } from './interface';
+import { TaskData, } from '../interface';
 import { RouterLink } from '@angular/router';
 
 
@@ -362,14 +362,14 @@ selectedCapital: number = 0;
       task_title: this.taskName,
       task_desc: this.taskDescription,
       project_id: this.project_id,
-      qualification: this.selectedQualification,
-      workenv: this.selectedWorkenv,
-      quality: this.selectedQuality,
-      leadtime: this.selectedLeadtime,
-      capacity: this.selectedCapacity,
-      economic: this.selectedEconomic,
-      independance: this.selectedIndependance,
-      capital: this.selectedCapital
+      qualification: this.selectedQualification / 10,
+      workenv: this.selectedWorkenv /10 ,
+      quality: this.selectedQuality /10 ,
+      leadtime: this.selectedLeadtime /10,
+      capacity: this.selectedCapacity /10,
+      economic: this.selectedEconomic /10,
+      independance: this.selectedIndependance /10,
+      capital: this.selectedCapital/10
     };
     this.apiService.addtask(newTask).subscribe(
       (response) => {
@@ -400,7 +400,7 @@ selectedCapital: number = 0;
   ngOnInit() {
 
     
-    this.apiService.gettaskdata(this.project_id).subscribe(
+    this.apiService.getTasksData(this.project_id).subscribe(
       (data) => {
         this.items = data;
         console.log(this.items)

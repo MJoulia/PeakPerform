@@ -14,3 +14,15 @@ export interface TaskData {
   }
 
 
+  export interface update_effects{
+    qualification: any
+    workenv: any
+    quality: any
+    leadtime: any
+    capacity: any
+    economic: any
+    independance: any
+    capital: any
+    task_id: number
+  }
+

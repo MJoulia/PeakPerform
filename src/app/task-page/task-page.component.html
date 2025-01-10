@@ -8,15 +8,16 @@
           <div style="width: 300px;">
             <mat-slider
               min="0"
-              max="100"
+              max="10"
               step="1"
               showTickMarks
               discrete
               [displayWith]="formatLabel"
-             >
-            
-              <input matSliderThumb
-        
+              
+              >
+              
+              <input matSliderThumb 
+              [value]="selectedQualification"
               (valueChange)="update_chart_value($event, 0)">
             </mat-slider>
           </div>
@@ -27,13 +28,13 @@
           <div style="width: 300px;">
             <mat-slider
               min="0"
-              max="100"
+              max="10"
               step="1"
               showTickMarks
               discrete
               [displayWith]="formatLabel">
               <input matSliderThumb
-        
+              [value]="selectedWorkenv"
               (valueChange)="update_chart_value($event, 1)">
             </mat-slider>
           </div>
@@ -44,12 +45,13 @@
           <div style="width: 300px;">
             <mat-slider
               min="0"
-              max="100"
+              max="10"
               step="1"
               showTickMarks
               discrete
               [displayWith]="formatLabel">
               <input matSliderThumb
+              [value]="selectedQuality"
               (valueChange)="update_chart_value($event, 2)">
             </mat-slider>
           </div>
@@ -60,13 +62,13 @@
           <div style="width: 300px;">
             <mat-slider
               min="0"
-              max="100"
+              max="10"
               step="1"
               showTickMarks
               discrete
               [displayWith]="formatLabel">
               <input matSliderThumb
-          
+              [value]="selectedLeadtime"
               (valueChange)="update_chart_value($event, 3)">
             </mat-slider>
           </div>
@@ -77,13 +79,13 @@
           <div style="width: 300px;">
             <mat-slider
               min="0"
-              max="100"
+              max="10"
               step="1"
               showTickMarks
               discrete
               [displayWith]="formatLabel">
               <input matSliderThumb
-      
+              [value]="selectedCapacity"
               (valueChange)="update_chart_value($event, 4)">
             </mat-slider>
           </div>
@@ -94,13 +96,13 @@
           <div style="width: 300px;">
             <mat-slider
               min="0"
-              max="100"
+              max="10"
               step="1"
               showTickMarks
               discrete
               [displayWith]="formatLabel">
               <input matSliderThumb
-           
+            [value]="selectedEconomic"
               (valueChange)="update_chart_value($event, 5)">
             </mat-slider>
           </div>
@@ -111,12 +113,13 @@
           <div style="width: 300px;">
             <mat-slider
               min="0"
-              max="100"
+              max="10"
               step="1"
               showTickMarks
               discrete
               [displayWith]="formatLabel">
               <input matSliderThumb
+              [value]="selectedIndependance"
               (valueChange)="update_chart_value($event, 6)">
             </mat-slider>
           </div>
@@ -127,22 +130,27 @@
           <div style="width: 300px;">
             <mat-slider
               min="0"
-              max="100"
+              max="10"
               step="1"
               showTickMarks
               discrete
-              [displayWith]="formatLabel">
+              [displayWith]="formatLabel"
+              >
               <input matSliderThumb
+              [value]="selectedCapital" 
               (valueChange)="update_chart_value($event, 7)">
             </mat-slider>
           </div>
       </div>
 
-    
+    <div [hidden]="hide_update_value">
+      <button (click)="cancel()">cancel</button>
+      <button (click)="updateTask()">Update</button>
+    </div>
   </div>
   
   <div class="sidebar-right">
-    <canvas #radarChartCanvas></canvas>
+    <canvas #radarChartCanvas  style="width: 100%; height: 100%;"></canvas>
   </div>      
   
         
