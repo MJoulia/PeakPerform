@@ -37,4 +37,15 @@ export class ApiService {
   addtask(taskdata: TaskData): Observable<any> {
     return this.http.post(`${this.baseUrl}/addtask`, taskdata);
   }
+  getProjectsFromArchive(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/archive`);
+  }
+  addProjecttoArchive(id: number): Observable<any> {
+    const body = { project_id: id };
+    return this.http.put(`${this.baseUrl}/add-project-to-archive`, body);
+  }
+  removeProjectFromArchive(id: number): Observable<any> {
+    const body = { project_id: id };
+    return this.http.put(`${this.baseUrl}/remove-project-to-archive`, body);
+  }
 }

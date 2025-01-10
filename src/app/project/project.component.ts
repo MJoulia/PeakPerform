@@ -19,13 +19,19 @@ import { ApiService } from '../api.service';
 export class ProjectComponent {
   constructor( private router: Router, private apiService: ApiService) { }
 
-  confirmNavigation(event: Event) {
-    event.preventDefault(); // Empêche le lien de naviguer immédiatement
-    const confirmed = confirm('Do you want to go to the archive page?');
-    if (confirmed) {
-      this.router.navigate(['/archive']);
-    }
+  add_project_to_archive(project_id: number) {
+    this.apiService.addProjecttoArchive(project_id).subscribe(
+      (response) => {
+        console.log('Project added successfully!', response);
+        window.location.reload();
+
+      },
+      (error) => {
+        console.error('Error adding project', error);
+      }
+    );
   }
+  
 
   
   // Gérer les tooltips
