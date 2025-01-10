@@ -183,3 +183,46 @@ mat-slider:hover {
       gap: 1.5rem;
     }
   }
+
+  .icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .icon-button svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .icon-button svg.bi-check-circle {
+    color: green;
+  }
+  
+  .icon-button svg.bi-x-circle {
+    color: red;
+  }
+  
+  .icon-button:hover svg.bi-check-circle {
+    color: darkgreen;
+  }
+  
+  .icon-button:hover svg.bi-x-circle {
+    color: darkred;
+  }
+
+  li {
+    border-left: 5px solid #ccc;
+    padding-left: 10px;
+  }
+  
+  li.done {
+    border-left-color: green;
+  }
+  
+  li.not-done {
+    border-left-color: red;
+  }
+  
+  

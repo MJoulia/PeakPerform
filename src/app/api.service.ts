@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { TaskData,  } from './task/interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +21,14 @@ export class ApiService {
   addProject(projectData: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/project`, projectData);
   }
-
-  gettaskdata(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/alltask`);
+  gettaskdata(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/alltask`, {
+      params: { id: id.toString() }
+    });
   }
-
+  
+  
+  addtask(taskdata: TaskData): Observable<any> {
+    return this.http.post(`${this.baseUrl}/addtask`, taskdata);
+  }
 }

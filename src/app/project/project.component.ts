@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { ApiService } from '../api.service';
 
@@ -9,7 +10,7 @@ import { ApiService } from '../api.service';
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [FormsModule, CommonModule, NavbarComponent],
+  imports: [FormsModule, CommonModule, NavbarComponent, RouterModule],
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css'],
 })

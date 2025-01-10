@@ -25,11 +25,12 @@
 
     <!-- Icône SVG en haut à droite -->
     <div class="card-menu" 
-      (mouseenter)="onMouseEnter(i)"
-      (mouseleave)="onMouseLeave(i)">
+      (mouseenter)="onMouseEnter(i)">
+      <a [routerLink]="['/taskpage' ,project[0]]">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"/>
       </svg>
+    </a>
       <div *ngIf="showTooltip[i]" class="tool">
         <small>More information</small>
       </div>
@@ -95,75 +96,82 @@
           <div class="form-group effects-group">
             <label>Effects (0-100%)</label>
             <mat-form-field>
-              <mat-label>Employee qualifications</mat-label>
-              <mat-select>
-                @for (qualif of qualifications; track qualif) {
-                  <mat-option [value]="qualif.value">{{qualif.viewValue}}</mat-option>
-                }
+              <mat-label>Employee Qualifications</mat-label>
+              <mat-select [(ngModel)]="selectedQualification">
+                <mat-option *ngFor="let qualif of qualifications" [value]="qualif.value">
+                  {{ qualif.viewValue }}
+                </mat-option>
               </mat-select>
             </mat-form-field>
             <mat-form-field>
               <mat-label>Working environment</mat-label>
-              <mat-select>
-                @for (wenv of working_environment; track wenv) {
-                  <mat-option [value]="wenv.value">{{wenv.viewValue}}</mat-option>
-                }
+              <mat-select [(ngModel)]="selectedWorkenv">
+                <mat-option *ngFor="let wenv of working_environment" [value]="wenv.value">
+                  {{ wenv.viewValue }}
+                </mat-option>
               </mat-select>
             </mat-form-field>
+            
             <mat-form-field>
               <mat-label>Quality management</mat-label>
-              <mat-select>
-                @for (qualit of qualities; track qualit) {
-                  <mat-option [value]="qualit.value">{{qualit.viewValue}}</mat-option>
-                }
+              <mat-select [(ngModel)]="selectedQuality">
+                <mat-option *ngFor="let qualit of qualities" [value]="qualit.value">
+                  {{ qualit.viewValue }}
+                </mat-option>
               </mat-select>
             </mat-form-field>
+            
             <mat-form-field>
               <mat-label>Lead Time</mat-label>
-              <mat-select>
-                @for (leadt of lead_time; track leadt) {
-                  <mat-option [value]="leadt.value">{{leadt.viewValue}}</mat-option>
-                }
+              <mat-select [(ngModel)]="selectedLeadtime">
+                <mat-option *ngFor="let leadt of lead_time" [value]="leadt.value">
+                  {{ leadt.viewValue }}
+                </mat-option>
               </mat-select>
             </mat-form-field>
+            
             <mat-form-field>
               <mat-label>Capacity</mat-label>
-              <mat-select>
-                @for (cap of capacity; track cap) {
-                  <mat-option [value]="cap.value">{{cap.viewValue}}</mat-option>
-                }
+              <mat-select [(ngModel)]="selectedCapacity">
+                <mat-option *ngFor="let cap of capacity" [value]="cap.value">
+                  {{ cap.viewValue }}
+                </mat-option>
               </mat-select>
             </mat-form-field>
+            
             <mat-form-field>
               <mat-label>Economic Situation</mat-label>
-              <mat-select>
-                @for (eco of economics; track eco) {
-                  <mat-option [value]="eco.value">{{eco.viewValue}}</mat-option>
-                }
+              <mat-select [(ngModel)]="selectedEconomic">
+                <mat-option *ngFor="let eco of economics" [value]="eco.value">
+                  {{ eco.viewValue }}
+                </mat-option>
               </mat-select>
             </mat-form-field>
+            
             <mat-form-field>
               <mat-label>Independence from suppliers</mat-label>
-              <mat-select>
-                @for (indep of independences; track indep) {
-                  <mat-option [value]="indep.value">{{indep.viewValue}}</mat-option>
-                }
+              <mat-select [(ngModel)]="selectedIndependance">
+                <mat-option *ngFor="let indep of independences" [value]="indep.value">
+                  {{ indep.viewValue }}
+                </mat-option>
               </mat-select>
             </mat-form-field>
+            
             <mat-form-field>
               <mat-label>Equity capital</mat-label>
-              <mat-select>
-                @for (capi of capital; track capi) {
-                  <mat-option [value]="capi.value">{{capi.viewValue}}</mat-option>
-                }
+              <mat-select [(ngModel)]="selectedCapital">
+                <mat-option *ngFor="let capi of capital" [value]="capi.value">
+                  {{ capi.viewValue }}
+                </mat-option>
               </mat-select>
             </mat-form-field>
+            
           </div>
           
           
   
           <!-- Subtasks: input + add -->
-          <div class="subtasks-section">
+          <!-- <div class="subtasks-section">
             <label>Subtasks</label>
             <div class="subtask-input">
               <input 
@@ -172,16 +180,15 @@
               />
               <button type="button"  (click)="addSubtask()">Add</button>
             </div>
-          </div>
+          </div> -->
         </div>
-        
-        <!-- RIGHT COLUMN: list of added subtasks -->
-        <div class="right-col">
+         <!-- RIGHT COLUMN: list of added subtasks  -->
+        <!-- <div class="right-col">
           <h3>Subtasks Added</h3>
           <ul>
             @for(s of subtasks; track s) {<li >{{ s }}</li>}
           </ul>
-        </div>
+        </div> -->
       </div>
   
       <!-- ACTIONS: Save and Cancel -->
@@ -192,5 +199,3 @@
     </div>
   </div>
 }
-
-  

@@ -10,14 +10,11 @@ import { ApiService } from '../api.service';
 import { NgClass } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { TaskData, } from './interface';
+import { RouterLink } from '@angular/router';
 
-
-export interface TaskData {
-  name: string;
-  description: string;
-  qualifications: { viewValue: string; value: number }[];
-  subtasks: string[];
-}
 
 export interface Qualification {
   viewValue: string;
@@ -71,7 +68,8 @@ export interface Capital {
     NavbarverticalComponent,
     DatePipe, 
     NgClass,
-    CommonModule
+    CommonModule,
+    RouterLink
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.css'
@@ -80,7 +78,12 @@ export interface Capital {
 
 
 export class TaskComponent {
-  constructor(  private apiService: ApiService) { }
+  route : ActivatedRoute = inject(ActivatedRoute);
+  project_id: number = 0;
+
+  constructor(  private apiService: ApiService) { 
+    this.project_id = Number(this.route.snapshot.params['id'])
+  }
 
   // 6 cartes -> un booléen par carte pour gérer l'affichage du tooltip
   showTooltip: boolean[] = [false, false, false, false, false, false];
@@ -112,6 +115,15 @@ export class TaskComponent {
   taskName = '';
   taskDescription = '';
   
+selectedQualification: number = 0;
+selectedWorkenv: number = 0;
+selectedQuality: number = 0;
+selectedLeadtime: number = 0;
+selectedCapacity: number = 0;
+selectedEconomic: number = 0;
+selectedIndependance: number = 0;
+selectedCapital: number = 0;
+
   // Effects array (eight items), each defaulting to 0%
   qualifications: Qualification[] = [
     { viewValue: '0%', value: 0 },
@@ -333,27 +345,43 @@ export class TaskComponent {
   resetForm() {
     this.taskName = '';
     this.taskDescription = '';
-    this.qualifications.forEach(e => e.value = 0);
-    this.subtasks = [];
-    this.newSubtask = '';
+    this.selectedQualification  = 0;
+    this.selectedWorkenv = 0;
+    this.selectedQuality  = 0;
+    this.selectedLeadtime  = 0;
+    this.selectedCapacity  = 0;
+    this.selectedEconomic  = 0;
+    this.selectedIndependance  = 0;
+    this.selectedCapital  = 0;
   }
 
-  // Add subtask to the array
-  addSubtask() {
-    if (this.newSubtask.trim() !== '') {
-      this.subtasks.push(this.newSubtask.trim());
-      this.newSubtask = '';
-    }
-  }
 
   // Save the entire form and close
   saveTask() {
     const newTask: TaskData = {
-      name: this.taskName,
-      description: this.taskDescription,
-      qualifications: this.qualifications.map(e => ({ ...e })), // clone
-      subtasks: [...this.subtasks]                 // clone
+      task_title: this.taskName,
+      task_desc: this.taskDescription,
+      project_id: this.project_id,
+      qualification: this.selectedQualification,
+      workenv: this.selectedWorkenv,
+      quality: this.selectedQuality,
+      leadtime: this.selectedLeadtime,
+      capacity: this.selectedCapacity,
+      economic: this.selectedEconomic,
+      independance: this.selectedIndependance,
+      capital: this.selectedCapital
     };
+    this.apiService.addtask(newTask).subscribe(
+      (response) => {
+        console.log('Project added successfully!', response);
+        this.closeDialog();
+        window.location.reload();
+
+      },
+      (error) => {
+        console.error('Error adding project', error);
+      }
+    );
 
     // Store in our local savedTasks array
     this.savedTasks.push(newTask);
@@ -366,10 +394,13 @@ export class TaskComponent {
 
   }
 
+
   // get task data from database
   items: any[] = [];
   ngOnInit() {
-    this.apiService.gettaskdata().subscribe(
+
+    
+    this.apiService.gettaskdata(this.project_id).subscribe(
       (data) => {
         this.items = data;
         console.log(this.items)

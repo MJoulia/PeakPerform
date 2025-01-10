@@ -3,14 +3,20 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSliderModule} from '@angular/material/slider';
 import { Component, ElementRef, ViewChild, AfterViewInit, Input } from '@angular/core';
 import Chart from 'chart.js/auto'; // Import de Chart.js
+import { CommonModule } from '@angular/common';
+import { ApiService } from '../api.service';
+import { inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-task-page',
-  imports: [MatButtonToggleModule, MatSliderModule],
+  imports: [MatButtonToggleModule, MatSliderModule,CommonModule],
   templateUrl: './task-page.component.html',
   styleUrls: ['./task-page.component.css']
 })
 export class TaskPageComponent implements AfterViewInit {
+task_id = 0
+route : ActivatedRoute = inject(ActivatedRoute);
 
 
  update_chart_value(newValue: number, num :number): void {
@@ -134,4 +140,40 @@ export class TaskPageComponent implements AfterViewInit {
 
     this.createDoughnutChart();
   }
+
+  
+  constructor( private apiService: ApiService) {
+    this.task_id = Number(this.route.snapshot.params['taskid'])
+   }
+
+
+  subtasks = ['Subtask 1', 'Subtask 2', 'Subtask 3'];
+  statuses: boolean[] = [false, false, false];  // false = Not , true = terminé
+
+// Marquer une tâche comme terminée
+  markAsDone(index: number) {
+    this.statuses[index] = true;
+    console.log(`Subtask ${index + 1} is marked as done!`);
+  }
+
+// Marquer une tâche comme pas encore terminée
+  markAsNotDone(index: number) {
+    this.statuses[index] = false;
+    console.log(`Subtask ${index + 1} is not done yet!`);
+  }
+
+
+  items: any[] = [];
+  ngOnInit() {
+    this.apiService.getprojectsimdata().subscribe(
+      (data) => {
+        this.items = data;
+        console.log(this.items)
+      },
+      (error) => {
+        console.error('Erreur to get the items :', error);
+      }
+    );
+  }
+  
 }

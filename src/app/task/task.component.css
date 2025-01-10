@@ -58,7 +58,7 @@ body {
   text-align: center;
   font-weight: bold;
   height: 150px;
-  color: #fff; /* texte par défaut sur fond coloré */
+  color: #d30e0e; /* texte par défaut sur fond coloré */
 }
 
 .card-title {

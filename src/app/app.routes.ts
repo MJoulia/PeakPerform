@@ -17,7 +17,7 @@ export const routes: Routes = [
   { path: 'createaccount', component: CreateaccountComponent},
   { path: 'project', component: ProjectComponent },
   { path: 'task/:id', component: TaskComponent },
-  { path: 'taskpage', component: TaskPageComponent },
+  { path: 'taskpage/:taskid', component: TaskPageComponent },
   { path: 'archive', component: ArchiveComponent },
 ];
 
