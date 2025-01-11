@@ -12,9 +12,15 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {ChangeDetectionStrategy, model} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
+
+
 @Component({
   selector: 'app-task-page',
-  imports: [MatButtonToggleModule,FormsModule,MatInputModule  , MatSliderModule,CommonModule, MatCheckboxModule],
+  imports: [MatButtonToggleModule,MatCardModule,MatIconModule,MatButtonModule,FormsModule,MatInputModule  , MatSliderModule,CommonModule, MatCheckboxModule],
   templateUrl: './task-page.component.html',
   styleUrls: ['./task-page.component.css']
 })
@@ -36,26 +42,40 @@ subtasks: any[] = []
 items: any[] = [];
 chart_val: any[] = []
 data_val: any[] = []
-addsubTask(){
-    const newSubTask:SubTask = {
+
+
+editSubTask(){}
+
+deleteSubTask(){}
+
+addsubTask() {
+  // Vérifiez que le nom de la sous-tâche n'est pas vide
+  if (this.newSubTaskName && this.newSubTaskName.trim() !== '') {
+    const newSubTask: SubTask = {
       subtaskname: this.newSubTaskName,
       task_id: this.task_id,
       subtask_finished: 0
-    } 
-    
+    };
+
+    // Effectuer l'appel à l'API
     this.apiService.addsubtask(newSubTask).subscribe(
       (response) => {
         console.log('Project added successfully!', response);
         window.location.reload();
-
       },
       (error) => {
         console.error('Error adding project', error);
       }
     );
-  
-  console.log(this.newSubTaskName)
+  } else {
+    // Message d'erreur si le champ est vide
+    alert('Le nom de la sous-tâche est requis !');
+    console.error('Le nom de la sous-tâche est requis.');
+  }
 }
+
+
+
  update_chart_value(newValue: number, num :number): void {
   switch (num) {
     case 0: this.selectedQualification = newValue; break;
@@ -75,6 +95,8 @@ addsubTask(){
     }
 
   }
+
+
   updateTask() {
     const effects:update_effects = {
       qualification: this.data_val[0],
@@ -98,6 +120,8 @@ addsubTask(){
     });
     this.hide_update_value = true
   }
+
+
   cancel(){
     this.selectedQualification = [...this.chart_val][0]
     this.selectedWorkenv =  [...this.chart_val][1]
@@ -113,6 +137,8 @@ addsubTask(){
     console.log(this.chart_val)
   
   }
+
+
   formatLabel(value: number): string {
   
     if (value >= 1000) {
