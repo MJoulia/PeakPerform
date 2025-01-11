@@ -48,4 +48,9 @@ export class ApiService {
     const body = { project_id: id };
     return this.http.put(`${this.baseUrl}/remove-project-to-archive`, body);
   }
+  getSubTaskData(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/subtask`, {
+      params: { task_id: id.toString() }
+    });
+  }
 }

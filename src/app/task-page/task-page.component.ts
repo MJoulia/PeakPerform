@@ -8,14 +8,19 @@ import { ApiService } from '../api.service';
 import { inject } from '@angular/core';
 import { update_effects } from '../interface';
 import { ActivatedRoute } from '@angular/router';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {ChangeDetectionStrategy, model} from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
 @Component({
   selector: 'app-task-page',
-  imports: [MatButtonToggleModule, MatSliderModule,CommonModule],
+  imports: [MatButtonToggleModule,FormsModule,MatInputModule  , MatSliderModule,CommonModule, MatCheckboxModule],
   templateUrl: './task-page.component.html',
   styleUrls: ['./task-page.component.css']
 })
 export class TaskPageComponent implements AfterViewInit {
+isChecked: boolean = false; 
+newSubTaskName: string = ""
 task_id = 0
 hide_update_value: boolean = true
 route : ActivatedRoute = inject(ActivatedRoute);
@@ -27,10 +32,13 @@ selectedCapacity: number = 0;
 selectedEconomic: number = 0;
 selectedIndependance: number = 0;
 selectedCapital: number = 0;
-
+subtasks: any[] = []
 items: any[] = [];
 chart_val: any[] = []
 data_val: any[] = []
+addsubTask(){
+  console.log(this.newSubTaskName)
+}
  update_chart_value(newValue: number, num :number): void {
   switch (num) {
     case 0: this.selectedQualification = newValue; break;
@@ -200,19 +208,20 @@ data_val: any[] = []
    }
 
 
-  subtasks = ['Subtask 1', 'Subtask 2', 'Subtask 3'];
-  statuses: boolean[] = [false, false, false];  // false = Not , true = terminé
+  // subtasks = ['Subtask 1', 'Subtask 2', 'Subtask 3'];
+  // statuses: boolean[] = [false, false, false];  // false = Not , true = terminé
 
 // Marquer une tâche comme terminée
   markAsDone(index: number) {
-    this.statuses[index] = true;
-    console.log(`Subtask ${index + 1} is marked as done!`);
+    // this.statuses[index] = true;
+    // console.log(`Subtask ${index + 1} is marked as done!`);
   }
 
 // Marquer une tâche comme pas encore terminée
   markAsNotDone(index: number) {
-    this.statuses[index] = false;
-    console.log(`Subtask ${index + 1} is not done yet!`);
+  //   this.statuses[index] = false;
+  //   console.log(`Subtask ${index + 1} is not done yet!`);
+  // 
   }
 
   ngOnInit() {
@@ -227,9 +236,22 @@ data_val: any[] = []
       }
    
     );
+    this.apiService.getSubTaskData(this.task_id).subscribe(
+      (data) => {
+        this.updateSubTaskData(data)
+      },
+      (error) => {
+        console.error('Erreur to get the items :', error);
+      }
+   
+    );
 
  }
- 
+
+ updateSubTaskData(data:any){
+  this.subtasks = data
+  console.log(this.subtasks)
+ }
  update_data(data:any){
   this.items = data;
   this.selectedQualification = this.items[0][4] 

@@ -162,9 +162,24 @@
 <div class="bottom-section">
 <!-- Section gauche : Liste des sous-tâches -->
 <div class="subtask-list">
+ 
+  <ul >
+  <div *ngFor="let subTask of subtasks; let i = index">
+    
+      <li> <mat-checkbox [(ngModel)]="isChecked">{{subTask[1]}}</mat-checkbox></li>
+   </div>
+</ul>
+<div style="max-width: 400px; margin: 20px auto;">
+
+  <mat-form-field appearance="outline" style="width: 300px;">
+    <mat-label>New Sub Task Name</mat-label>
+    <input matInput [(ngModel)]="newSubTaskName" placeholder="Enter new subtask name">
+  </mat-form-field>
 
 
-
+  <button mat-raised-button color="primary" (click)="addsubTask()">
+    add Sub Task
+  </button>
 </div>
 
 <!-- Section droite : Diagramme circulaire -->
