@@ -1,228 +1,138 @@
-
-  .task-details {
-    padding: 1.5rem;
-    background-color: #122b47;
-    color: #fff;
-    text-align: center;
-    font-size: 1.8rem;
-    font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  .main-content {
-    display: flex;
-    padding: 2rem;
-    gap: 1.5rem;
-  }
-
-mat-slider:hover {
-  background-color: #ddd;
+/* Task Details Section */
+.task-details {
+  padding: 1.5rem;
+  background-color: #122b47;
+  color: #fff;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  box-shadow: 0 10px 4px rgba(232, 226, 226, 0.1);
 }
 
-  .sidebar-left, .sidebar-right {
-    flex: 1;
-    padding: 1.5rem;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .sidebar-left h2 {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 0.5rem;
-  }
-
-.sidebar-left .sidebar-right div{
+/* Main Content (Sliders + Radar Chart) */
+.main-content {
   display: flex;
-  align-items: center;
-  gap: 100px;
-  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  padding: 2rem;
+  gap: 1.5rem;
 }
 
+/* Sidebar Left (Sliders) */
+.sidebar-left {
+  flex: 1;
+  min-width: 300px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+/* Sidebar Right (Radar Chart) */
+.sidebar-right {
+  flex: 1;
+  min-width: 300px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  .diagram, .circle-diagram {
-    background-color: #dee2e6;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 1rex;
-  }
-  .sidebar-left {
-    margin-right: 1rem;
-  }
-  .sidebar-right {
-    margin-left: 1rem;
-  }
+/* Bottom Section (Subtasks + Doughnut Chart) */
+.bottom-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #eaeaea;
+}
+
+.subtask-list,
+.circle-diagram {
+  flex: 1;
+  min-width: 300px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Container for the Circle Diagram */
+.circle-diagram .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-content,
   .bottom-section {
-    display: flex;
-    background-color: #f8f9fa;
-    padding: 1rem;
-    gap: 2rem;
-    border-top: 1px solid #eaeaea;
+    flex-direction: column;
   }
-  .subtask-list {
-    flex: 1;
-    padding: 1.5rem;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  .circle-diagram {
-    flex: 1;
-    padding: 1.5rem;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+}
 
+.subtask-list {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+}
 
+.subtask-list ul {
+  margin-bottom: 50px;
+}
 
+.subtask-list div[style*="display: flex"] {
+  justify-content: space-between;
+}
+/* Input moderne sans cadre */
+.modern-input {
+  flex: 1;
+  padding: 12px 90px;
+  font-size: 16px;
+  color:rgb(8, 3, 3);
+  background: white;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /*transition: all 0.3s ease;*/
+}
 
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #efefef;
-    padding: 2rem;
-    border-radius: 10px;
-    max-width: 900px;
-    margin: 2rem auto;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  }
+/* Couleur du texte dans l'input */
+.modern-input::placeholder {
+  color: rgba(8, 3, 3, 0.442);
+  opacity: 0.8;
+}
 
-  .text-section {
-    flex: 1;
-    padding-right: 2rem;
-  }
+/* Effet au focus (si nécessaire) */
+.modern-input:focus {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
 
-  .text-section h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
+/* Bouton moderne */
+.modern-button {
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-  .text-section p {
-    font-size: 1rem;
-    line-height: 1.5;
-  }
+/* Effet au survol du bouton */
+.modern-button:hover {
+  /*background: linear-gradient(to right, #00f2fe, #4facfe);*/
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
 
-  .chart-section {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-
-  .chart {
-    width: 200px;
-    height: 200px;
-    background: conic-gradient(
-      #1abc9c 0% 15%, 
-      #3498db 15% 50%, 
-      #9b59b6 50% 60%, 
-      #e67e22 60% 80%, 
-      #e74c3c 80% 100%
-    );
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
-  }
-
-  .chart::before {
-    content: '';
-    width: 100px;
-    height: 100px;
-    background-color: #122b47;
-    border-radius: 50%;
-  }
-
-
-  mat-slider {
-    width: 300px;
-  }
-
-
-
-
-
-
-
-  .chart-container {
-    position: relative;
-    width: 400px;
-    height: 400px;
-  }
-
-  svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  .chart-text {
-    font-size: 14px;
-    font-weight: bold;
-    text-anchor: middle;
-    dominant-baseline: central;
-  }
-
-  canvas {
-    max-width: 100%;
-    max-height: 400px;
-    margin: auto;
-    display: block;
-  }
-
-
-  @media(max-width: 768px){
-    .bottom-section{
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-  }
-
-  .icon-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 5px;
-  }
-  
-  .icon-button svg {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .icon-button svg.bi-check-circle {
-    color: green;
-  }
-  
-  .icon-button svg.bi-x-circle {
-    color: red;
-  }
-  
-  .icon-button:hover svg.bi-check-circle {
-    color: darkgreen;
-  }
-  
-  .icon-button:hover svg.bi-x-circle {
-    color: darkred;
-  }
-
-  li {
-    border-left: 5px solid #ccc;
-    padding-left: 10px;
-  }
-  
-  li.done {
-    border-left-color: green;
-  }
-  
-  li.not-done {
-    border-left-color: red;
-  }
-  
-  
+.modern-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

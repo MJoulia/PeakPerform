@@ -162,25 +162,27 @@
 <div class="bottom-section">
 <!-- Section gauche : Liste des sous-tâches -->
 <div class="subtask-list">
- 
-  <ul >
-  <div *ngFor="let subTask of subtasks; let i = index">
-    
-      <li> <mat-checkbox [(ngModel)]="isChecked">{{subTask[1]}}</mat-checkbox></li>
-   </div>
-</ul>
-<div style="max-width: 400px; margin: 20px auto;">
+  <ul>
+    <div *ngFor="let subTask of subtasks; let i = index">
+      <li>
+        <mat-checkbox [(ngModel)]="subTask.isChecked">{{ subTask[1] }}</mat-checkbox>
+      </li>
+    </div>
+  </ul>
 
-  <mat-form-field appearance="outline" style="width: 300px;">
-    <mat-label>New Sub Task Name</mat-label>
-    <input matInput [(ngModel)]="newSubTaskName" placeholder="Enter new subtask name">
-  </mat-form-field>
-
-
-  <button mat-raised-button color="primary" (click)="addsubTask()">
-    add Sub Task
-  </button>
+  <!-- Champ d'ajout de sous-tâche avec bouton moderne -->
+  <div style="max-width: 400px; margin: 20px auto; display: flex; align-items: center; gap: 10px;">
+    <!-- Input moderne sans cadre -->
+    <input class="modern-input" [(ngModel)]="newSubTaskName" placeholder="Enter new subtask">
+  
+    <!-- Bouton moderne -->
+    <button class="modern-button" (click)="addsubTask()">Add Sub Task</button>
+  </div>
+  
 </div>
+
+
+
 
 <!-- Section droite : Diagramme circulaire -->
 <div class="circle-diagram">
@@ -194,4 +196,4 @@
     </div>
   </div>
 </div>
-</div>
+

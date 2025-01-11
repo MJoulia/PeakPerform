@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TaskData, update_effects } from './interface';
+import { SubTask, TaskData, update_effects } from './interface';
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +52,8 @@ export class ApiService {
     return this.http.get(`${this.baseUrl}/subtask`, {
       params: { task_id: id.toString() }
     });
+  }
+  addsubtask(subtaskData: SubTask): Observable<any> {
+    return this.http.post(`${this.baseUrl}/add-new-sub-task`, subtaskData);
   }
 }

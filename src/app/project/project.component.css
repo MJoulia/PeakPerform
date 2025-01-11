@@ -116,7 +116,7 @@
   
 
   /* 6) Media query pour passer en 1 colonne sur petit écran */
-  @media (max-width: 768px) {
+  @media (max-width: 950px) {
     .cards {
       grid-template-columns: 1fr;
     }

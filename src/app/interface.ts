@@ -11,10 +11,15 @@ export interface TaskData {
     economic      : number;
     independance  : number;
     capital       : number;
-  }
+}
 
+export interface SubTask {
+  subtaskname: string 
+  task_id: number
+  subtask_finished: number
+}
 
-  export interface update_effects{
+export interface update_effects{
     qualification: any
     workenv: any
     quality: any
@@ -24,5 +29,5 @@ export interface TaskData {
     independance: any
     capital: any
     task_id: number
-  }
+}
 

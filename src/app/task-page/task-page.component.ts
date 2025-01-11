@@ -6,7 +6,7 @@ import Chart from 'chart.js/auto'; // Import de Chart.js
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../api.service';
 import { inject } from '@angular/core';
-import { update_effects } from '../interface';
+import { SubTask, update_effects } from '../interface';
 import { ActivatedRoute } from '@angular/router';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {ChangeDetectionStrategy, model} from '@angular/core';
@@ -37,6 +37,23 @@ items: any[] = [];
 chart_val: any[] = []
 data_val: any[] = []
 addsubTask(){
+    const newSubTask:SubTask = {
+      subtaskname: this.newSubTaskName,
+      task_id: this.task_id,
+      subtask_finished: 0
+    } 
+    
+    this.apiService.addsubtask(newSubTask).subscribe(
+      (response) => {
+        console.log('Project added successfully!', response);
+        window.location.reload();
+
+      },
+      (error) => {
+        console.error('Error adding project', error);
+      }
+    );
+  
   console.log(this.newSubTaskName)
 }
  update_chart_value(newValue: number, num :number): void {
