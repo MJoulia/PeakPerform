@@ -97,21 +97,29 @@
   }
 
 
-  .tool{
-    position: absolute;
-    bottom: -20px;
-    right: 0;
-    transform: translateY(0px);
-    background-color: rgba(255, 255, 255, 0.801);
-    color: #000000;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    white-space: nowrap;
-    pointer-events: none;
-    z-index: 9910999;
-  }
 
+
+  /* Styles pour le tooltip */
+.tool {
+  position: absolute;
+   /* Ajustez selon vos besoins */
+  /*left: -90%;*/
+  /*transform: translateX(-30%);*/
+  background-color: #094f9f95;
+  color: white;
+  padding-top: 0px;
+  border-radius: 4px;
+  font-size: 12px;
+  
+  text-align: center;
+  /*bottom: -20px;*/
+  right: 0;
+  padding: 4px 100%;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+    
+}
  
   
 
@@ -174,10 +182,9 @@
 
 
 /* Styles pour le tooltip */
-.tool {
+/*.tool {
   position: absolute;
-  top: 30px; /* Ajustez selon vos besoins */
-  /*left: -90%;*/
+  top: 30px; 
   transform: translateX(-30%);
   background-color: #094f9f95;
   color: white;
@@ -187,7 +194,7 @@
   
   z-index: 100;
   text-align: center;
-}
+}*/
 
 .card-menu {
   position: absolute;
@@ -209,3 +216,15 @@
 }
 
 
+
+
+h1{
+  padding-top: 10px;
+  text-align: center;
+  padding-bottom: 10px;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  background-color: aliceblue;
+  margin-bottom: 10px;
+  margin-top: 70px;
+}

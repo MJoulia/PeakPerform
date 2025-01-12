@@ -2,7 +2,7 @@
 <app-navbar></app-navbar>
 
 <main class="main-content">
-  <h1>Project</h1>
+  <h1>Project Archive</h1>
   <section class="cards">
     <!-- Cartes générées dynamiquement -->
     <div
@@ -10,12 +10,13 @@
       [ngClass]="project.colorClass"
       *ngFor="let project of items; let i = index"
     >
-
     
-      <a (click)="removeFromArchive(project[3])" class="card-icon">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
-        <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
-      </svg>
+    
+    <a (click)="removeFromArchive(project[3])" class="card-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+          <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+        </svg>
     </a>
 
     <!-- Icône SVG en haut à droite -->
@@ -39,45 +40,3 @@
   </section>
 </main>
 
-<!-- Bouton flottant pour ajouter un projet -->
-<button class="add-button" (click)="onAddClick()">+</button>
-
-<!-- Modale pour ajouter un projet -->
-<div class="modal-backdrop" *ngIf="showModal" (click)="closeModal()">
-  <div class="modal-content" (click)="$event.stopPropagation()">
-    <h2>Add new Project</h2>
-
-    <!-- FORM: pass the form data to saveProject(...) on submit -->
-    <form #f="ngForm" (ngSubmit)="saveProject(f.value)">
-      <!-- Project Name -->
-      <div class="form-group">
-        <label for="project_title">Name of Project</label>
-        <input type="text" id="project_title" name="project_title" ngModel required />
-      </div>
-
-      <!-- Description -->
-      <div class="form-group">
-        <label for="project_description">Description</label>
-        <textarea
-          id="project_description"
-          name="project_description"
-          rows="3"
-          ngModel
-          required
-        ></textarea>
-      </div>
-
-      <!-- Deadline -->
-      <div class="form-group">
-        <label for="project_deadline">Deadline</label>
-        <input id="project_deadline" type="date" name="project_deadline" ngModel required />
-      </div>
-
-      <!-- Actions -->
-      <div class="actions">
-        <button type="button" (click)="closeModal()">Cancel</button>
-        <button type="submit">Save</button>
-      </div>
-    </form>
-  </div>
-</div>
