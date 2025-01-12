@@ -15,12 +15,26 @@ import {MatInputModule} from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { NavbarComponent } from "../navbar/navbar.component";
+import { NavbarverticalComponent } from '../navbarvertical/navbarvertical.component';
 
 
 
 @Component({
   selector: 'app-task-page',
-  imports: [MatButtonToggleModule,MatCardModule,MatIconModule,MatButtonModule,FormsModule,MatInputModule  , MatSliderModule,CommonModule, MatCheckboxModule],
+  imports: [
+            MatButtonToggleModule,
+            MatCardModule, 
+            MatIconModule,
+            MatButtonModule,
+            FormsModule,
+            MatInputModule,
+            MatSliderModule,
+            CommonModule, 
+            MatCheckboxModule,
+            NavbarComponent,
+            NavbarverticalComponent
+          ],
   templateUrl: './task-page.component.html',
   styleUrls: ['./task-page.component.css']
 })

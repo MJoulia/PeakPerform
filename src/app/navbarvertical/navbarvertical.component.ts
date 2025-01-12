@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { CommonModule } from '@angular/common'; 
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbarvertical',
   templateUrl: './navbarvertical.component.html',
-  imports: [ CommonModule],
+  imports: [ CommonModule, RouterModule ],
   styleUrls: ['./navbarvertical.component.css']
 })
 export class NavbarverticalComponent implements OnInit {

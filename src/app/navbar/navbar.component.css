@@ -4,10 +4,22 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #3400ee;
+  background-color: #094f9f;
   color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  color: white;
+  padding: 10px 20px;
+  z-index: 1100; /* Plus grand que la navbar verticale pour rester au-dessus */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
+
+
 
 /* Section gauche (Logo + Archive) */
 .left-section {
@@ -19,7 +31,8 @@
 .logo {
   font-size: 30px;
   font-weight: bold;
-  margin-right: 20px;
+  margin-right: 50px;
+  margin-left: 20px;
   text-decoration: none;
   color: aliceblue;
 }

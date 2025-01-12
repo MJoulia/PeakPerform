@@ -3,7 +3,7 @@
     <!-- Utilisation de project[0] pour afficher le titre -->
      <div *ngFor="let project of items; let i = index">
       <li >
-        <a href="#">{{ project[0] }}</a>
+        <a [routerLink]="['/project' ,project[3]]">{{ project[0] }}</a>
       </li>
      </div>
  

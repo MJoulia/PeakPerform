@@ -58,13 +58,14 @@ export class ProjectComponent {
         console.log('Project added successfully!', response);
         this.closeModal();
         window.location.reload();
-
+       
       },
       (error) => {
         console.error('Error adding project', error);
       }
     );
   }
+
   // Gérer l'affichage du tooltip
   onMouseEnter(index: number) {
     this.showTooltip[index] = true;

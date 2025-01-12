@@ -142,7 +142,10 @@ mat-checkbox {
   font-style: italic;
 }
 
-
+.main-content {
+  margin-left: 250px;
+  padding-top: 80px;
+  }
 
 
 /* Style du bouton */

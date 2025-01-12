@@ -6,7 +6,7 @@
   </div>
   <div class="user-section">
     <span class="user-name">{{ userName }}</span>
-    <button class="logout-btn" (click)="logout()" title="Se déconnecter">
+    <button class="logout-btn" [routerLink]="'/login'" (click)="logout()" title="Log Out">
       <i class="fa fa-sign-out" aria-hidden="true"></i>
     </button>
   </div>
