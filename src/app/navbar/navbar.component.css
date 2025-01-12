@@ -1,40 +1,62 @@
-/* Exemple de style basique pour la navbar */
+/* Navbar principale */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f8f9fa; /* Couleur de fond */
-  padding: 10px 20px;       /* Espace interne */
+  padding: 10px 20px;
+  background-color: #3400ee;
+  color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.logo {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
+/* Section gauche (Logo + Archive) */
+.left-section {
+  display: flex;
+  align-items: center;
 }
 
+/* Logo */
+.logo {
+  font-size: 30px;
+  font-weight: bold;
+  margin-right: 20px;
+  text-decoration: none;
+  color: aliceblue;
+}
+
+/* Lien Archive */
+.archive-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.archive-link:hover {
+  color: #ccc;
+}
+
+/* Section utilisateur (Nom + Bouton déconnexion) */
 .user-section {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
 .user-name {
-  font-weight: 500;
-  color: #555;
+  margin-right: 10px;
+  font-size: 16px;
 }
 
 /* Bouton de déconnexion */
 .logout-btn {
   background: none;
   border: none;
+  color: #fff;
   cursor: pointer;
-  font-size: 1.1rem;
-  color: #555;
-  transition: color 0.2s ease;
+  font-size: 18px;
 }
 
-.logout-btn:hover {
-  color: #000;
+.logout-btn i {
+  margin-left: 5px;
 }

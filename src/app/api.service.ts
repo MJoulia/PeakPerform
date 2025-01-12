@@ -53,7 +53,15 @@ export class ApiService {
       params: { task_id: id.toString() }
     });
   }
+
   addsubtask(subtaskData: SubTask): Observable<any> {
     return this.http.post(`${this.baseUrl}/add-new-sub-task`, subtaskData);
   }
+
+
+  
+  delSubTask(subtask: number): Observable<any> {
+  return this.http.delete(`${this.baseUrl}/deletesubtask`);
+  }
 }
+

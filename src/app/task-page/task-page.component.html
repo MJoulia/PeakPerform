@@ -164,19 +164,22 @@
 <div class="subtask-list">
   <ul>
     <div *ngFor="let subTask of subtasks; let i = index">
-      <li>
+      <li class="subtask-item">
         <mat-checkbox [(ngModel)]="subTask.isChecked">{{ subTask[1] }}</mat-checkbox>
+        <button mat-icon-button color="warn" (click)="deleteSubTask()">
+          <mat-icon>delete</mat-icon>
+        </button>
       </li>
     </div>
   </ul>
 
   <!-- Champ d'ajout de sous-tâche avec bouton moderne -->
-  <div style="max-width: 400px; margin: 20px auto; display: flex; align-items: center; gap: 10px;">
+  <div style="max-width: 500px; margin: auto auto; display: flex; align-items: center; gap: 10px;">
     <!-- Input moderne sans cadre -->
     <input class="modern-input" [(ngModel)]="newSubTaskName" placeholder="Enter new subtask">
   
     <!-- Bouton moderne -->
-    <button class="modern-button" (click)="addsubTask()">Add Sub Task</button>
+    <button class="modern-button" (click)="addsubTask()">Add</button>
   </div>
   
 </div>

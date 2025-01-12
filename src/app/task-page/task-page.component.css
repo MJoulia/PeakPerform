@@ -17,6 +17,24 @@
   gap: 1.5rem;
 }
 
+
+.subtask-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  list-style: none;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+mat-checkbox {
+  flex-grow: 1;
+}
+
+
 /* Sidebar Left (Sliders) */
 .sidebar-left {
   flex: 1;
@@ -85,18 +103,19 @@
 .subtask-list div[style*="display: flex"] {
   justify-content: space-between;
 }
-/* Input moderne sans cadre */
+
+/* Style de l'input */
 .modern-input {
-  flex: 1;
-  padding: 12px 90px;
+  width: 350px;
+  max-width: 400px;
+  padding: 12px ;
+
   font-size: 16px;
-  color:rgb(8, 3, 3);
-  background: white;
-  border: none;
-  border-radius: 25px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   outline: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /*transition: all 0.3s ease;*/
 }
 
 /* Couleur du texte dans l'input */
@@ -105,34 +124,46 @@
   opacity: 0.8;
 }
 
+
+
 /* Effet au focus (si nécessaire) */
 .modern-input:focus {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  transform: translateY(-2px);
+  /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);*/
+
+  border-color: #0063ee63;
+  box-shadow: 0 0 5px rgba(98, 0, 238, 0.3);
+
 }
 
-/* Bouton moderne */
+/* Placeholder styling */
+.modern-input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+
+
+
+/* Style du bouton */
 .modern-button {
-  background: linear-gradient(to right, #4facfe, #00f2fe);
-  color: white;
-  border: none;
-  border-radius: 25px;
   padding: 12px 20px;
   font-size: 16px;
-  font-weight: bold;
+  color: #ffffff;
+  background-color: #0063eea9;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.5s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
 }
 
 /* Effet au survol du bouton */
 .modern-button:hover {
-  /*background: linear-gradient(to right, #00f2fe, #4facfe);*/
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-  transform: translateY(-3px);
+  background-color: #0063ee;
 }
 
+/* Effet lorsque le bouton est pressé */
 .modern-button:active {
-  transform: translateY(1px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #1500ff;
 }

@@ -46,7 +46,12 @@ data_val: any[] = []
 
 editSubTask(){}
 
-deleteSubTask(){}
+deleteSubTask(){
+  this.apiService.delSubTask(this.task_id).subscribe(
+    (response) => { console.log('Deleted', response) },
+    (error) => { console.error('Error deleting subtask', error) }
+  )
+}
 
 addsubTask() {
   // Vérifiez que le nom de la sous-tâche n'est pas vide
