@@ -81,6 +81,7 @@ export class TaskComponent {
   route : ActivatedRoute = inject(ActivatedRoute);
   project_id: number = 0;
 
+
   constructor(  private apiService: ApiService) { 
     // this.project_id = Number(this.route.snapshot.params['id'])
   }

@@ -44,11 +44,11 @@
           <small>More information</small>
         </div>
       </div>-->
-      <h2 class="card-title">{{ project[0]}}</h2>
+      <h2 class="card-title">{{ project[1]}}</h2>
       <!--<p><strong>ID:</strong> {{ project.id }}</p>-->
       <!--<p><strong>Description:</strong> {{ project.description }}</p>-->
-      <p><strong>Deadline:</strong> {{ project[1] }}</p>
-      <p><strong>Date Created:</strong> {{ project[2] | date: 'short' }}</p>
+      <!--<p><strong>Deadline:</strong> {{ project[1] }}</p>
+      <p><strong>Date Created:</strong> {{ project[2] | date: 'short' }}</p>-->
     </div>
   </section>
 </main>
@@ -57,9 +57,9 @@
   <button class="add-button" (click)="openDialog()">+</button>
   
 <!-- Modal (shows if showModal === true) -->
-@if (showDialog) {
+
     <!-- MODAL -->
-<div class="dialog-backdrop" (click)="closeDialog()">
+<div *ngIf="showDialog" class="dialog-backdrop" (click)="closeDialog()">
     <div class="dialog-content" (click)="$event.stopPropagation()">
       
       <h2>Create a New Task</h2>
@@ -91,7 +91,7 @@
           <!-- Effects (eight) -->
           <div class="form-group effects-group">
             <label>Effects (0-100%)</label>
-            <mat-form-field>
+            <mat-form-field appearance="outline">
               <mat-label>Employee Qualifications</mat-label>
               <mat-select [(ngModel)]="selectedQualification">
                 <mat-option *ngFor="let qualif of qualifications" [value]="qualif.value">
@@ -99,7 +99,7 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field appearance="outline">
               <mat-label>Working environment</mat-label>
               <mat-select [(ngModel)]="selectedWorkenv">
                 <mat-option *ngFor="let wenv of working_environment" [value]="wenv.value">
@@ -108,7 +108,7 @@
               </mat-select>
             </mat-form-field>
             
-            <mat-form-field>
+            <mat-form-field appearance="outline">
               <mat-label>Quality management</mat-label>
               <mat-select [(ngModel)]="selectedQuality">
                 <mat-option *ngFor="let qualit of qualities" [value]="qualit.value">
@@ -117,7 +117,7 @@
               </mat-select>
             </mat-form-field>
             
-            <mat-form-field>
+            <mat-form-field appearance="outline">
               <mat-label>Lead Time</mat-label>
               <mat-select [(ngModel)]="selectedLeadtime">
                 <mat-option *ngFor="let leadt of lead_time" [value]="leadt.value">
@@ -126,7 +126,7 @@
               </mat-select>
             </mat-form-field>
             
-            <mat-form-field>
+            <mat-form-field appearance="outline">
               <mat-label>Capacity</mat-label>
               <mat-select [(ngModel)]="selectedCapacity">
                 <mat-option *ngFor="let cap of capacity" [value]="cap.value">
@@ -135,7 +135,7 @@
               </mat-select>
             </mat-form-field>
             
-            <mat-form-field>
+            <mat-form-field appearance="outline">
               <mat-label>Economic Situation</mat-label>
               <mat-select [(ngModel)]="selectedEconomic">
                 <mat-option *ngFor="let eco of economics" [value]="eco.value">
@@ -144,7 +144,7 @@
               </mat-select>
             </mat-form-field>
             
-            <mat-form-field>
+            <mat-form-field appearance="outline">
               <mat-label>Independence from suppliers</mat-label>
               <mat-select [(ngModel)]="selectedIndependance">
                 <mat-option *ngFor="let indep of independences" [value]="indep.value">
@@ -153,7 +153,7 @@
               </mat-select>
             </mat-form-field>
             
-            <mat-form-field>
+            <mat-form-field appearance="outline">
               <mat-label>Equity capital</mat-label>
               <mat-select [(ngModel)]="selectedCapital">
                 <mat-option *ngFor="let capi of capital" [value]="capi.value">
@@ -194,4 +194,3 @@
       </div>
     </div>
   </div>
-}

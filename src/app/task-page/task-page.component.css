@@ -17,6 +17,9 @@
   gap: 1.5rem;
 }
 
+.modern-input{
+  width: 80%;
+}
 
 .subtask-item {
   display: flex;
