@@ -1,9 +1,35 @@
+<!-- Navbar -->
 <nav class="navbar">
+  <!-- Left section: Logo and links -->
   <div class="left-section">
-    
+    <!-- Hamburger Icon -->
+    <div class="menu-icon" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Logo -->
     <a class="logo" [routerLink]="'/project'">PeakPerform</a>
-    <a class="archive-link" [routerLink]="'/archive'">Archive</a>
   </div>
+
+  <!-- Menu links (hidden on small screens) -->
+  <ul [class.active]="menuActive" class="menu-links">
+    <!-- Home link with icon -->
+    
+
+    <!-- Situation link -->
+    <li>
+      <a class="archive-link" [routerLink]="'/entrep-situation'">Situation</a>
+    </li>
+
+    <!-- Archive link -->
+    <li>
+      <a class="archive-link" [routerLink]="'/archive'">Archive</a>
+    </li>
+  </ul>
+
+  <!-- User section -->
   <div class="user-section">
     <span class="user-name">{{ userName }}</span>
     <button class="logout-btn" [routerLink]="'/login'" (click)="logout()" title="Log Out">

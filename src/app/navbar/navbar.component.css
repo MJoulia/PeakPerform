@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: #094f9f;
+  background: linear-gradient(135deg, #094f9f, #1d7ad7);
   color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: fixed;
@@ -41,9 +41,10 @@
 .archive-link {
   color: #fff;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   transition: color 0.3s ease;
+  margin-right: 20px;
 }
 
 .archive-link:hover {
@@ -72,4 +73,72 @@
 
 .logout-btn i {
   margin-left: 5px;
+}
+
+
+/* Menu icon (Hamburger) */
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.menu-icon span {
+  background-color: #ffffff;
+  height: 6px;
+  width: 25px;
+  margin-bottom: 5px;
+  border-radius: 2px;
+}
+
+/* Menu links */
+.menu-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.menu-links li a {
+  
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.menu-links{
+  text-align: center;
+  padding-top: 20px;
+}
+
+.menu-links li a:hover {
+  color: darkgray;
+}
+
+/* Responsive styles for small screens */
+@media (max-width: 768px) {
+  .menu-links {
+    margin-top: 15px;
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: #094f9fa6;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    
+  }
+
+  .menu-links.active {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: flex;
+  }
+
+  .user-section {
+    display: none;
+  }
 }

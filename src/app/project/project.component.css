@@ -57,7 +57,7 @@
     text-align: center;
     font-weight: bold;
     height: 150px;
-    background-color: #094f9f;
+    background-color: #094F9F	;
     color: #fff; /* texte par défaut sur fond coloré */
     box-shadow: 0 4px 6px rgba(19, 11, 11, 0.322);
   }
@@ -117,7 +117,8 @@
     height: 50px;
     border: none;
     border-radius: 50%;
-    background-color: #28a745; /* Vert par exemple */
+    background: linear-gradient(90deg, #094f9f, #10b981);
+    background-color: #3B82F6; /* Vert par exemple */
     color: #fff;
     font-size: 2rem;
     cursor: pointer;
@@ -126,7 +127,7 @@
   
   /* Optionnel : au survol, on peut modifier la couleur */
   .add-button:hover {
-    background-color: #218838; /* Vert plus foncé */
+    background-color: #5b83c4; /* Vert plus foncé */
   }
 
 

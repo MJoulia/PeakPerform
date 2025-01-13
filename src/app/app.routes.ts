@@ -8,6 +8,7 @@ import { ProjectComponent } from './project/project.component';
 import { TaskComponent } from './task/task.component';
 import { TaskPageComponent } from './task-page/task-page.component';
 import { ArchiveComponent } from './archive/archive.component';
+import { EntrepSituationComponent } from './entrep-situation/entrep-situation.component';
 
 
 export const routes: Routes = [
@@ -19,6 +20,7 @@ export const routes: Routes = [
   { path: 'task/:id', component: TaskComponent },
   { path: 'taskpage/:taskid', component: TaskPageComponent },
   { path: 'archive', component: ArchiveComponent },
+  { path: 'entrep-situation', component: EntrepSituationComponent },
 ];
 
 @NgModule({

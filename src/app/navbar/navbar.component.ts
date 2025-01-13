@@ -23,4 +23,10 @@ export class NavbarComponent {
     // Redirect to logout page or perform logout logic here
     console.log('Déconnexion en cours…');
   }
+
+  menuActive = false;
+
+  toggleMenu(): void {
+    this.menuActive = !this.menuActive;
+  }
 }

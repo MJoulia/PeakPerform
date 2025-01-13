@@ -1,0 +1,39 @@
+<app-navbar></app-navbar>
+
+<main class="dashboard">
+  <h1>Dashboard - Company Situation</h1>
+
+  <!-- Information cards section -->
+  <section class="info-cards">
+    <div class="card">
+      <h2>Revenue</h2>
+      <p>€ 120,000</p>
+    </div>
+    <div class="card">
+      <h2>Monthly Expenses</h2>
+      <p>€ 45,000</p>
+    </div>
+    <div class="card">
+      <h2>Active Projects</h2>
+      <p>8 projects</p>
+    </div>
+    <div class="card">
+      <h2>Number of Employees</h2>
+      <p>25</p>
+    </div>
+  </section>
+
+  <!-- Charts section -->
+  <section class="charts">
+    <div class="chart" id="revenue-chart">
+      <div>
+        <canvas id="myChart"></canvas>
+      </div>
+    </div>
+    <div class="piechart" id="projects-progress-chart">
+      <div class="pchart">
+        <canvas id="myPieChart"></canvas>
+      </div>
+    </div>
+  </section>
+</main>
