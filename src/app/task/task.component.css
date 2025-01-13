@@ -250,25 +250,66 @@ padding: 20px;
 
 
 .dialog-backdrop {
-  position: fixed;         /* Pour que ça prenne tout l’écran */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.5); /* Fond semi-transparent */
-  display: flex;          /* On va se servir du flex pour centrer le contenu */
-  align-items: center;    /* Verticalement centré */
-  justify-content: center; /* Horizontalement centré */
-  z-index: 999;           /* Au-dessus de tout */
-  margin-left: 100px;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 .dialog-content {
-  position: relative;     /* Pour pouvoir y placer d’éventuels éléments absolus */
-  background-color: #fff; /* Fond blanc */
-  padding: 1.5rem;
+  background-color: #fff;
+  padding: 20px;
   border-radius: 8px;
-  width: 500px;           /* Largeur fixe, ajustable */
-  max-width: 90%;         /* Pour être responsive */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.dialog-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.input-field {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.input-textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: none;
+}
+.effects-group {
+  margin-top: 20px;
+}
+.dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.button.cancel {
+  background-color: #f44336;
+  color: white;
+}
+.button.save {
+  background-color: #4caf50;
+  color: white;
 }

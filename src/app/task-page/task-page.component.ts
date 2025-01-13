@@ -39,7 +39,7 @@ import { NavbarverticalComponent } from '../navbarvertical/navbarvertical.compon
   styleUrls: ['./task-page.component.css']
 })
 export class TaskPageComponent implements AfterViewInit {
-isChecked: boolean = false; 
+  isChecked = true
 newSubTaskName: string = ""
 task_id = 0
 hide_update_value: boolean = true
@@ -57,14 +57,18 @@ items: any[] = [];
 chart_val: any[] = []
 data_val: any[] = []
 
-
+sub(subt: any){
+  console.log( subt.isChecked)
+ 
+}
 editSubTask(){}
 
-deleteSubTask(){
-  this.apiService.delSubTask(this.task_id).subscribe(
+deleteSubTask(subTaskId: number){
+  this.apiService.delSubTask(subTaskId).subscribe(
     (response) => { console.log('Deleted', response) },
     (error) => { console.error('Error deleting subtask', error) }
   )
+  window.location.reload()
 }
 
 addsubTask() {
@@ -336,4 +340,7 @@ addsubTask() {
   this.createRadarChart(this.data_val)
 
  }
+
+
+
 }

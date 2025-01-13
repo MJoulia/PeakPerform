@@ -168,8 +168,8 @@
   <ul>
     <div *ngFor="let subTask of subtasks; let i = index">
       <li class="subtask-item">
-        <mat-checkbox [(ngModel)]="subTask.isChecked">{{ subTask[1] }}</mat-checkbox>
-        <button mat-icon-button color="warn" (click)="deleteSubTask()">
+        <mat-checkbox (ngModelChange)="sub(subTask)"  [(ngModel)]="subTask.isChecked">{{ subTask[1] }}</mat-checkbox>
+        <button mat-icon-button color="warn" (click)="deleteSubTask(subTask[0])">
           <mat-icon>delete</mat-icon>
         </button>
       </li>

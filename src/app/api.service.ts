@@ -60,8 +60,9 @@ export class ApiService {
 
 
   
-  delSubTask(subtask: number): Observable<any> {
-  return this.http.delete(`${this.baseUrl}/deletesubtask`);
-  }
-}
+  delSubTask(subtaskId: number): Observable<any> {
+  return this.http.delete(`${this.baseUrl}/deletesubtask`,  {
+    params: { subtask_id: subtaskId.toString() }
+  });
+}}
 
