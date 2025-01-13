@@ -62,11 +62,19 @@ body {
   }
   
   .chart {
+    display: flex;
+    flex-direction: column;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     height: 350px;
+    border-radius: 8px;
+    height: 650px;
+  }
+
+  .chart div{
+    margin-bottom: 20px;
   }
 
   /* Styling for charts */
@@ -76,16 +84,17 @@ body {
   justify-content: space-around;
 }
 
-.chart {
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-}
+
+
+
 
 canvas {
   max-width: 100%;
   height: auto;
+}
+
+.lchart{
+  padding-top: 30px;
 }
 
 
