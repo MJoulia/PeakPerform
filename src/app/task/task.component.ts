@@ -82,9 +82,13 @@ export class TaskComponent {
   project_id: number = 0;
 
   constructor(  private apiService: ApiService) { 
-    this.project_id = Number(this.route.snapshot.params['id'])
+    // this.project_id = Number(this.route.snapshot.params['id'])
   }
-
+  // ngOnInit() {
+  //   this.route.params.subscribe(params => {
+  //     this.loadProjectById(params['id']);
+  //   });
+  // }
   // 6 cartes -> un booléen par carte pour gérer l'affichage du tooltip
   showTooltip: boolean[] = [false, false, false, false, false, false];
 
@@ -399,7 +403,12 @@ selectedCapital: number = 0;
   items: any[] = [];
   ngOnInit() {
 
-    
+    this.route.params.subscribe(params => {
+      this.project_id = Number(params['id']); 
+      this.getProjectDetails(); 
+    });
+  }
+  getProjectDetails() {
     this.apiService.getTasksData(this.project_id).subscribe(
       (data) => {
         this.items = data;

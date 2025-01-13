@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ApiService } from '../api.service';
 import { inject } from '@angular/core';
 import { SubTask, update_effects } from '../interface';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {ChangeDetectionStrategy, model} from '@angular/core';
 import { FormsModule } from '@angular/forms';
