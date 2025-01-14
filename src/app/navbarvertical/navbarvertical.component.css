@@ -1,10 +1,11 @@
 /* Style global de la barre de navigation verticale */
 .navbar-vertical {
+  margin-top: 10px;
   width: 250px;
-  background-color: #f8f9fa;
+  background: linear-gradient(135deg, #094f9f, #1d7ad7);
+  color: #fff;
   height: calc(100vh - 55px); /* Ajustez la hauteur pour ne pas chevaucher la navbar horizontale */
   padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 55px; /* Espace réservé pour la navbar horizontale */
   left: 0;
@@ -31,15 +32,18 @@
 
 .menu > li > a {
   text-decoration: none;
-  color: #333;
+  color: #ffffff; /* Texte en blanc */
   font-weight: bold;
   padding: 10px;
   display: block;
   border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
+/* Effet de survol */
 .menu > li > a:hover {
-  background-color: #e9ecef;
+  background-color: #ffffff; /* Fond blanc au survol */
+  color: #094f9f; /* Texte bleu au survol */
 }
 
 /* Sous-menu */
@@ -55,29 +59,32 @@
 
 .submenu li a {
   text-decoration: none;
-  color: #555;
+  color: #ffffff; /* Texte en blanc pour le sous-menu */
   font-weight: normal;
   padding: 8px 10px;
   display: block;
   border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
+/* Effet de survol pour le sous-menu */
 .submenu li a:hover {
-  background-color: #e9ecef;
+  background-color: #277bcf;
+  color: #ffffff; /* Garder le texte blanc au survol */
 }
 
-/* Style pour supprimer le soulignement des liens */
+/* Suppression du soulignement des liens */
 .navbar-vertical .menu li a {
-  text-decoration: none; /* Supprime le soulignement */
-  color: #333;
+  text-decoration: none;
+  color: #ffffff; /* Assurez-vous que tous les liens sont en blanc */
   font-weight: bold;
   padding: 10px;
   display: block;
   border-radius: 4px;
 }
 
-/* Effet de survol */
+/* Effet de survol global */
 .navbar-vertical .menu li a:hover {
-  background-color: #e9ecef;
-  color: #000;
+  background-color: #277bcf;
+  color: #ffffff;
 }
