@@ -146,7 +146,7 @@ mat-checkbox {
 }
 
 .main-content {
-  margin-left: 250px;
+  
   padding-top: 80px;
   }
 
@@ -172,4 +172,9 @@ mat-checkbox {
 /* Effet lorsque le bouton est pressé */
 .modern-button:active {
   background-color: #1500ff;
+}
+
+
+.bottom-section{
+  width: 100%;
 }

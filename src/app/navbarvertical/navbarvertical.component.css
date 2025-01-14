@@ -88,3 +88,9 @@
   background-color: #277bcf;
   color: #ffffff;
 }
+
+@media (max-width: 768px) {
+  .navbar-vertical {
+    transform: translateX(-100%); /* Cache la barre de navigation */
+  }
+}
