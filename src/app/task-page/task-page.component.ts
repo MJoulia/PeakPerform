@@ -341,6 +341,9 @@ addsubTask() {
 
  }
 
+ toggleSubTask(subTask: any) {
+  subTask.isChecked = subTask.isChecked === 0 ? 1 : 0;
+}
 
 
 }
