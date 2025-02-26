@@ -101,7 +101,7 @@ export class EntrepSituationComponent implements OnInit {
           x: {
             title: {
               display: true,
-              text: 'Months'
+              
             }
           },
           y: {

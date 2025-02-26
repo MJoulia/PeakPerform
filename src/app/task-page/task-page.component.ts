@@ -183,15 +183,15 @@ addsubTask() {
       new Chart(ctx, {
         type: 'doughnut', // Type of chart
         data: {
-          labels: ['Red', 'Blue', 'Yellow'], // Replace with your labels
+          labels: ['Subtask 1', 'Subtask 2', ''], // Replace with your labels
           datasets: [
             {
               label: 'Dataset',
-              data: [100, 50, 25], // Replace with your data
+              data: [33, 33, 25], // Replace with your data
               backgroundColor: [
                 'rgb(255, 99, 132)',
                 'rgb(54, 162, 235)',
-                'rgb(255, 205, 86)'
+                'rgba(255, 204, 86, 0)'
               ],
               
               hoverOffset:4

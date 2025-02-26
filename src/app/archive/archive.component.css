@@ -57,7 +57,7 @@
     text-align: center;
     font-weight: bold;
     height: 150px;
-    background-color: #094f9f;
+    background: linear-gradient(135deg, #094f9f, #1d7ad7);
     color: #fff; /* texte par défaut sur fond coloré */
     box-shadow: 0 4px 6px rgba(19, 11, 11, 0.322);
   }

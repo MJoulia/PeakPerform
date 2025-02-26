@@ -11,8 +11,12 @@ html, body {
     display: flex;
     width: 100%;
     height: 100vh;
-    background: url('../../../img/accueil.jpg') no-repeat center center;
-    background-size: cover;
+    background: url('../../../img/immg.jpg') no-repeat center center;
+    
+    /*background: url('../../../img/accueil.jpg') no-repeat center center;
+    */background-size: cover;
+    /*background-color: #0b8699;*/
+
   }
   
   .overlay-left {
@@ -23,7 +27,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     margin-left: 200px; /* Ajout d’une marge à gauche */
-    opacity: 80%;
+    opacity: 100%;
   }
   
   
