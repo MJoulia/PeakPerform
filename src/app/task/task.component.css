@@ -20,12 +20,16 @@ main {
   box-sizing: border-box;
 }
 
+
+
+
 /* ✅ Ajustement lorsque la navbar verticale est visible */
 @media (min-width: 769px) {
   main {
     margin-left: 250px; /* Décale le contenu si la navbar verticale est visible */
     width: calc(100% - 250px);
   }
+  
 }
 
 /* 🌐 Grille des cartes */
@@ -127,3 +131,133 @@ h1 {
   margin-top: 70px;
 }
 
+
+
+/* 🌍 Style global pour la modale */
+.dialog-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.dialog-content {
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Ombre douce */
+  width: 90%;
+  max-width: 500px;
+  text-align: left;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* ✅ Animation douce pour l'apparition */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 🌍 Titre de la modale */
+.dialog-content h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #094f9f;
+}
+
+/* 📝 Champs du formulaire */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  transition: border 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border: 1px solid #094f9f;
+  outline: none;
+  background-color: #fff;
+}
+
+/* 🎯 Effets */
+.effects-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* 📌 Alignement des éléments */
+.mat-form-field {
+  width: 100%;
+}
+
+/* 🌍 Boutons d'action */
+.dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.dialog-actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+/* 🔴 Bouton "Cancel" */
+.dialog-actions button:first-child {
+  background-color: #d9534f;
+  color: white;
+}
+
+.dialog-actions button:first-child:hover {
+  background-color: #c9302c;
+}
+
+/* 🟢 Bouton "Save" */
+.dialog-actions button:last-child {
+  background-color: #28a745;
+  color: white;
+}
+
+.dialog-actions button:last-child:hover {
+  background-color: #218838;
+}
+/* 🌍 Forcer l'affichage des menus déroulants au-dessus de la modale */
+.cdk-overlay-container, .cdk-overlay-pane {
+  z-index: 3000 !important;
+}
